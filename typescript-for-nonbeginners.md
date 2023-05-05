@@ -973,14 +973,55 @@ TypeScript introduces a few new types not present in JavaScript to help you writ
   }
   ```
 #### Advanced Types
-##### Intersection Types
-##### Union Types
-##### Type Aliases
-##### Literal Types
-##### Optional Types and Properties
-##### Indexable Types
-##### Mapped Types
-##### Conditional Types
+TypeScript introduces several advanced types and type behaviors that are not present in JavaScript. These types provide powerful tools for creating more expressive type annotations and handling complex typing situations.
+* **Intersection Types**: Intersection types allow you to combine multiple types into one. This feature allows you to add together existing types to get a single type that has all the features you need.
+  ```typescript
+  interface Part1 { a: number; }
+  interface Part2 { b: string; }
+  type Part1AndPart2 = Part1 & Part2; // Equivalent to "interface Part1AndPart2 { a: number; b: string; }"
+  ```
+* **Union Types**: Union types are a way of declaring a type that could be one of several types. This is useful for handling functions that can accept multiple types of arguments.
+  ```typescript
+  function printId(id: number | string) {
+    console.log("Your ID is: " + id);
+  }
+  ```
+* **Type Aliases**: Type aliases create a new name for a type. It's not creating a new type, but creating a new name to refer to that type.
+  ```typescript
+  type Name = string;
+  ```
+* **Literal Types**: Literal types allow you to specify the exact value a variable or parameter must have. They're often used in conjunction with union types to express a finite set of possibilities.
+  ```typescript
+  type Easing = "ease-in" | "ease-out" | "ease-in-out";
+  ```
+* **Optional Types and Properties**: In TypeScript, we can use the `?` symbol to denote optional properties in an interface or optional parameters in a function. This mirrors Python's optional arguments and is a feature not present in JavaScript.
+  ```typescript
+  interface Config {
+      color?: string;
+      width?: number;
+  }
+  ```
+* **Indexable Types**: Indexable types have an index signature that describes the types we can use to index into the object, along with the corresponding return types when indexing.
+  ```typescript
+  interface StringArray {
+    [index: number]: string;
+  }
+  ```
+* **Mapped Types**: Mapped types allow you to create new types based on old ones by transforming properties. This is a unique TypeScript feature that doesn't have a direct analogy in JavaScript, Python, or C.
+  ```typescript
+  type Readonly<T> = {
+      readonly [P in keyof T]: T[P];
+  }
+  ```
+* **Conditional Types**: Conditional types allow you to choose the type based on a condition. It has a syntax that might remind you of ternary operators in JavaScript.
+  ```typescript
+  type TypeName<T> =
+      T extends string ? "string" :
+      T extends number ? "number" :
+      T extends boolean ? "boolean" :
+      T extends undefined ? "undefined" :
+      "object";
+  ```
 ### Variables, Constants, and Scope
 #### Variable Declaration: var, let, and const
 #### Scope Rules in TypeScript
