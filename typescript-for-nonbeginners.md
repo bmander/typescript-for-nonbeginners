@@ -1,4 +1,4 @@
-# Typescript for nonbeginners: a primer for experienced programmers
+# Typescript for nonbeginners: a primer for C/Python programmers
 
 ## Introduction
 ### Explanation of TypeScript and its relationship to JavaScript
@@ -361,8 +361,52 @@ Arrow functions differ from traditional function declarations and expressions in
 
 Arrow functions in JavaScript are somewhat similar to lambda functions in Python, as both provide a way to define small anonymous functions. In contrast, C does not have an equivalent to JavaScript's arrow functions or Python's lambdas, although you can achieve similar functionality with function pointers and anonymous functions in some C environments (like GNU C).
 
-##### Function Parameters and Arguments: default parameters, rest parameters
+##### Function Parameters and Arguments
+
+In JavaScript, functions can take parameters. Parameters are values that the function expects you to pass when you call it. You can also set default values for parameters, and accept an arbitrary number of arguments.
+
+* **Default Parameters**: In JavaScript, you can set default values for function parameters. If a value is not provided when the function is called, the default value is used instead.
+  ```javascript
+  function greet(name = 'Guest') {
+      console.log('Hello, ' + name + '!');
+  }
+
+  greet('Emily');  // prints: Hello, Emily!
+  greet();  // prints: Hello, Guest!
+  ```
+  Default parameters are an ES6 feature, and are not available in earlier versions of JavaScript. This is also a feature available in Python, but not in C.
+* **Rest Parameters**: The rest parameter syntax allows you to represent an indefinite number of arguments as an array. In a function's parameter list, rest parameters are denoted by three dots `...` preceding the parameter's name.
+  ```javascript
+  function add(...numbers) {
+      let sum = 0;
+      for (let num of numbers) {
+          sum += num;
+      }
+      return sum;
+  }
+
+  console.log(add(1, 2, 3, 4));  // prints: 10
+  ```
+  Rest parameters were also introduced in ES6. Python has a similar feature with its `\*args` syntax. In C, functions must declare a fixed number of parameters, but you can achieve similar functionality with variadic functions and the `va_list` type, which is more complex and less flexible than JavaScript's rest parameters.
 ##### Closures
+In JavaScript, a closure is a function that has access to its own scope, the outer function's scope, and the global scope. This means that a function defined inside another function can access variables defined in its parent function even after the parent function has finished executing.
+
+Here's an example:
+```javascript
+function makeAdder(x) {
+    return function(y) {
+        return x + y;
+    }
+}
+
+let add5 = makeAdder(5);
+console.log(add5(3));  // prints: 8
+```
+In this example, `makeAdder` is a function that takes one argument, `x`, and returns a new function. The returned function takes one argument, `y`, and returns the sum of `x` and `y`. Here, `x` is a free variable that is "closed over" by the inner function, forming a closure. Even though `makeAdder` has finished executing and its scope is no longer active, the inner function still has access to `x`.
+
+Closures are a powerful feature of JavaScript (and other languages that support first-class functions) because they allow you to associate data (the environment) with a function that operates on that data, a concept that's fundamental to functional programming.
+
+Python also supports closures with similar semantics to JavaScript. In C, you can achieve similar functionality with function pointers and structures, but the syntax is less straightforward and closures are not as commonly used as they are in JavaScript and Python.
 #### Object-Oriented Programming in JavaScript
 ##### Objects and Prototypes
 ##### Classes (ES6+)
