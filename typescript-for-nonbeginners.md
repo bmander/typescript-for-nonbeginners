@@ -115,7 +115,51 @@ Congratulations, you've set up and verified your Linux environment for JavaScrip
 ### Basic Syntax and Concepts
 #### Variables and Constants
 ##### var, let, and const
+In JavaScript, you can declare variables using `var`, `let`, or `const`.
+
+```javascript
+var x = 5;
+let y = 6;
+const z = 7;
+```
+
+`var` is the oldest way to declare variables. It's not used as much in modern JavaScript, but it's still important to understand. `let` and `const` are newer and were introduced with ES6 (ES2015).
+
+The `let` keyword declares a block-scoped local variable, optionally initializing it to a value. `let` allows you to declare variables that are limited to the scope of a block statement, or expression on which it is used, unlike `var` which defines a variable globally, or locally to an entire function regardless of block scope.
+
+```javascript
+let x = 1;
+if (true) {
+  let x = 2;  // different variable
+  console.log(x);  // 2
+}
+console.log(x);  // 1
+```
+
+The `const` keyword behaves like `let`, but you can't reassign to it. It's a good choice when you know a variable shouldn't change:
+
+```javascript
+const pi = 3.14159;
+pi = 3;  // TypeError: Assignment to constant variable.
+```
+In comparison, Python uses `=` for variable assignment and doesn't have block scope, and it doesn't have a built-in constant type. In C, you declare variables with a type identifier like `int`, `float`, `char`, etc., and `const` is used to declare constants.
 ##### Scope and hoisting
+
+In JavaScript, a variable's "scope" is the context in which it's defined. JavaScript has three types of scope: global, function, and block.
+
+* A variable declared outside a function becomes a **global variable** and is accessible from anywhere in your code.
+* A variable declared with `var` inside a function is **function-scoped**, meaning it's local to that function and can't be accessed from outside that function.
+* A variable declared with `let` or `const` inside a block `{}` is **block-scoped**, meaning it's local to that block.
+
+"Variable hoisting" is a unique feature of JavaScript. The JavaScript interpreter moves all variable and function declarations to the top of their containing scope, but not their assignments. This is called "hoisting". This means you can use a variable before it's declared in your code, although this is considered bad practice and can lead to confusion.
+
+```javascript
+console.log(x);  // undefined, but no error because x is "hoisted"
+var x = 5;
+```
+
+In contrast, Python's scope is determined by the function, class, or module in which a variable is declared, and it doesn't have variable hoisting. In C, a variable's scope is determined by the block in which it's declared, and it also doesn't have variable hoisting.
+console.log(x);  // 5
 #### Data Types
 ##### Primitive Types: number, string, boolean, null, undefined, symbol
 ##### Composite Types: object, array, function
