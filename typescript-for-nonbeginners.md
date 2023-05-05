@@ -1,4 +1,4 @@
-# Typescript for nonbeginners: a primer for C/Python programmers
+# TypeScript for non-beginners: a primer for C and Python programmers
 
 ## Introduction
 ### Explanation of TypeScript and its relationship to JavaScript
