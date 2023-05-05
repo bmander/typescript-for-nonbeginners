@@ -112,6 +112,23 @@ If everything is set up correctly, you should see the message Hello, TypeScript!
 Congratulations, you've set up and verified your Linux environment for JavaScript and TypeScript development! You're now ready to proceed with the rest of the primer.
 
 ## JavaScript Refresher
+### Javascript Versions
+#### ECMAScript and JavaScript
+JavaScript is based on the ECMAScript standard. ECMAScript is a standard for scripting languages, and JavaScript is the most well-known implementation of this standard. Other implementations include JScript by Microsoft and ActionScript used in Flash.
+
+ECMAScript is standardized by the ECMA International standards organization in the ECMA-262 specification. The standard was first published in 1997, and it has been updated with new versions on a regular basis since then.
+
+Key Versions
+* **ES1-ES3 (1997-1999)**: The early years of ECMAScript established foundational language features.
+* **ES5 (2009)**: This version was a significant update to the language, introducing features such as Array.prototype methods like forEach, map, filter, and reduce, JSON support, and strict mode which helps catch common coding mistakes and "unsafe" actions.
+* **ES6 / ES2015**: This version brought a massive number of updates, and is often considered a new era for JavaScript. Major features include let and const, classes, arrow functions, promises, and modules.
+* **ES7 / ES2016 - ES11 / ES2020**: The ECMA committee moved to an annual release cycle, with smaller sets of features released each year. Notable additions include async/await (ES2017), rest/spread operators (ES2018), optional chaining and nullish coalescing (ES2020).
+####
+Because JavaScript runs in browsers, server environments, and more, it's important to consider compatibility. Not all environments support all features of the latest ECMAScript standard. For example, Internet Explorer does not support many ES6 features. This is where transpilers like Babel come into play, converting newer JavaScript code into older syntax for compatibility.
+
+In the context of TypeScript, it is worth noting that TypeScript supports newer ECMAScript features, and can compile your TypeScript (which includes these features) into JavaScript that aligns with older ECMAScript standards for broad compatibility.
+
+For checking feature support across various JavaScript environments, resources like [caniuse.com](https://caniuse.com/) and the [ECMAScript compatibility](https://kangax.github.io/compat-table/es6/) table are invaluable.
 ### Basic Syntax and Concepts
 #### Variables and Constants
 ##### var, let, and const
