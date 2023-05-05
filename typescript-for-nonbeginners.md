@@ -1023,9 +1023,44 @@ TypeScript introduces several advanced types and type behaviors that are not pre
       "object";
   ```
 ### Variables, Constants, and Scope
-#### Variable Declaration: var, let, and const
-#### Scope Rules in TypeScript
-#### Hoisting
+The rules and conventions for variables, constants, and scope in TypeScript largely follow those of JavaScript, with some added layers of safety from the typing system. In this section, we'll focus on key differences and salient features as they relate to TypeScript.
+#### Var, Let, and Const
+In TypeScript, you can declare variables with `var`, `let`, or `const`, similar to JavaScript. The difference between these lies in scoping rules, reassignments, and hoisting behavior.
+```typescript
+var varVariable = "var"; // Function or globally scoped, can be reassigned, hoisted
+let letVariable = "let"; // Block scoped, can be reassigned, not hoisted
+const constVariable = "const"; // Block scoped, can't be reassigned, not hoisted
+```
+While `var` is function-scoped and can be reassigned, it is generally recommended to use `let` and `const` which are block-scoped, similar to variables in Python and C, and can prevent many common JavaScript errors.
+#### Type Annotations
+TypeScript introduces type annotations, allowing you to explicitly specify the type of a variable at the time of declaration, enhancing type safety.
+```typescript
+let isDone: boolean = false; // Here, `isDone` is declared as a boolean
+```
+#### Scope
+Variable scope in TypeScript follows the same rules as in JavaScript. There are two types of scope: global scope and local scope. Any variable declared outside of a function belongs to the global scope, and it can be accessed from any part of the code. A variable declared inside a function is known as a local variable, and it is only accessible within that function.
+```typescript
+let globalVar = "I am global!"; // This is a global variable
+
+function test() {
+    let localVar = "I am local!"; // This is a local variable
+    console.log(globalVar); // This is fine
+    console.log(localVar); // This is also fine
+}
+
+console.log(globalVar); // This is fine
+console.log(localVar); // Error: localVar is not defined
+```
+Like C, TypeScript also has block scope. However, unlike C and more like Python, variables in TypeScript (and JavaScript) are not block scoped when declared with `var` but are block scoped when declared with `let` or `const`.
+
+#### Variable Hoisting
+Hoisting is a JavaScript concept where variable and function declarations are moved to the top of their containing scope during the compile phase, which is also applicable to TypeScript. However, only declarations are hoisted, not initializations.
+```typescript
+console.log(hoistedVar); // undefined, but no error because hoistedVar is hoisted
+var hoistedVar = "I am hoisted!";
+```
+
+In TypeScript, it's important to note that `let` and `const` are also hoisted, but they are not initialized to undefined like `var`. Accessing a `let` or `const` variable before its declaration will result in a `ReferenceError`.
 ### Functions
 #### Function Types
 #### Optional and Default Parameters
