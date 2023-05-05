@@ -227,6 +227,43 @@ In addition to primitive types, JavaScript has composite types: `object`, `array
 In sum, JavaScript offers a versatile set of data types, both primitive and composite. Its dynamic nature allows for great flexibility, but can also be a source of confusion and bugs, which TypeScript helps to address.
 #### Control Flow
 ##### Conditional Statements: if, else, switch
+JavaScript has several constructs for conditional execution of code: `if`, `else`, and `switch`.
+* `if`: This is the most basic form of control flow statement. It performs a statement if a logical condition is true. If the condition is false, another statement can be executed using the `else` clause.
+  ```javascript
+  let count = 5;
+  if (count > 0) {
+      console.log("Count is greater than zero");
+  } else {
+      console.log("Count is zero or less");
+  }
+  ```
+  This is very similar to if and else in Python and C. The syntax is slightly different, but the concept is the same.
+* `else if`: Allows for multiple conditions to be checked in sequence. The first condition that evaluates to true will have its associated block of code executed.
+  ```javascript
+  if (count > 0) {
+      console.log("Count is positive");
+  } else if (count < 0) {
+      console.log("Count is negative");
+  } else {
+      console.log("Count is zero");
+  }
+  ```
+  This is equivalent to using elif in Python, or another if inside an else in C.
+* `switch`: This is a form of control flow that allows the program to execute different blocks of code based on the value of a condition or expression.
+  ```javascript
+  let fruit = 'apple';
+  switch (fruit) {
+      case 'banana':
+          console.log('I am a banana.');
+          break;
+      case 'apple':
+          console.log('I am an apple.');
+          break;
+      default:
+          console.log('I am not a banana or an apple.');
+  }
+  ```
+The switch statement in JavaScript is quite similar to that in C, including the use of break to prevent fallthrough. Python doesn't have a switch statement, but similar functionality can be achieved with a dictionary of functions or a series of if, elif, and else statements.
 ##### Loops: for, while, do...while, for...in, for...of
 #### Functions
 ##### Function Declaration and Expression
