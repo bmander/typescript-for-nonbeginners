@@ -407,9 +407,53 @@ In this example, `makeAdder` is a function that takes one argument, `x`, and ret
 Closures are a powerful feature of JavaScript (and other languages that support first-class functions) because they allow you to associate data (the environment) with a function that operates on that data, a concept that's fundamental to functional programming.
 
 Python also supports closures with similar semantics to JavaScript. In C, you can achieve similar functionality with function pointers and structures, but the syntax is less straightforward and closures are not as commonly used as they are in JavaScript and Python.
+
 #### Object-Oriented Programming in JavaScript
+JavaScript is a multi-paradigm language that supports procedural, functional, and object-oriented programming styles. One of the unique aspects of JavaScript's object-oriented programming (OOP) model is its use of prototypes and prototypal inheritance, as opposed to the classical inheritance found in languages like Python and C++.
 ##### Objects and Prototypes
+In JavaScript, an object is a collection of properties, and a property is an association between a key (or name) and a value. A property's value can be a function, in which case the property is known as a method. Objects in JavaScript are dynamic; properties can be added, modified, and deleted after the object is created.
+```javascript
+let dog = {
+  name: 'Fido',
+  bark: function() {
+    console.log('Woof!');
+  }
+};
+
+dog.bark();  // prints: Woof!
+```
+Each object in JavaScript has a prototype. The prototype is another object that is used as a fallback source of properties. When you try to access a property of an object, JavaScript first checks the object itself, and if it doesn't find the property there, it looks on the object's prototype, and so on up the prototype chain.
+```javascript
+let animal = {
+  makesSound: true
+};
+
+let dog = Object.create(animal);
+console.log(dog) // prints: {}
+console.log(dog.__proto__); //prints {makesSound: true}
+console.log(dog.makesSound);  // prints: true
+```
+In this example, the dog object doesn't have a makesSound property of its own, but it inherits it from its prototype, the animal object. This is an example of prototypal inheritance.
+
 ##### Classes (ES6+)
+Despite its prototypal nature, JavaScript introduced a `class` keyword in ES6 to facilitate a more classical OOP syntax. JavaScript's classes are a syntactic sugar over its existing prototype-based inheritance.
+```javascript
+class Dog {
+  constructor(name) {
+    this.name = name;
+  }
+
+  bark() {
+    console.log('Woof!');
+  }
+}
+
+let fido = new Dog('Fido');
+fido.bark();  // prints: Woof!
+```
+In this example, `Dog` is a class with a constructor and a method. The `class` syntax in JavaScript is similar to classes in Python and other OOP languages, but under the hood, it's still using JavaScript's prototype-based model.
+
+It's important to note that `this` in JavaScript behaves differently than in Python and C++. In JavaScript, the value of this is determined by how a function is called, and it can be different each time the function is called. In contrast, in Python and C++, `this` (or `self` in Python) always refers to the instance on which the method was called.
 ### Unique Features and Idiosyncrasies
 #### Dynamic Typing and Type Coercion
 #### Truthy and Falsy Values
