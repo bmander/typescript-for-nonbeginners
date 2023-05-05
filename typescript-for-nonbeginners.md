@@ -892,19 +892,86 @@ TypeScript is a superset of JavaScript, so any valid JavaScript code is also val
 In summary, TypeScript's syntax is a superset of JavaScript's, with additional features to support static typing, interfaces, and other constructs that are more common in statically typed languages like C. This creates a bridge between the dynamic JavaScript world and the more static world of languages like C and Python, allowing developers to choose the level of type safety and abstraction that's appropriate for their specific project.
   
 ### TypeScript Types
+TypeScript enhances the dynamic typing of JavaScript with a robust system of static types, allowing for safer and more predictable code. In this section, we'll explore TypeScript's basic types, their similarities and differences with JavaScript's types, and the unique types that TypeScript introduces.
 #### Basic Types
-##### Boolean
-##### Number
-##### String
-##### Array
-##### Tuple
-##### Enum
-##### Unknown
-##### Any
-##### Void
-##### Null and Undefined
-##### Never
-##### Object
+Just like in JavaScript, TypeScript includes the `boolean`, `number`, `string`, and `array` types. Their usage is straightforward and similar to other languages like Python and C.
+```typescript
+let isDone: boolean = false;
+let decimal: number = 6;
+let color: string = "blue";
+let list: number[] = [1, 2, 3];
+```
+
+The `undefined`, `null`, and `object` types are shared between JavaScript and TypeScript, but TypeScript's static type system introduces important differences. In TypeScript, `undefined` and `null` are subtypes of all other types, meaning you can assign `null` and `undefined` to something like a `number`-typed variable. However, when using the --strictNullChecks flag, `null` and `undefined` have their own separate types and you can't assign them to other types like `number` or `string`.
+
+```typescript
+let u: undefined = undefined;
+let n: null = null;
+```
+
+TypeScript's `object` type represents any non-primitive type, which is a bit different from JavaScript's broader `Object` type. Also note that the `object` type in TypeScript is different from the `Object` type, and the latter is almost never recommended to use.
+
+```typescript
+let obj: object = { prop: "value" }; // OK
+obj = "string"; // Error
+```
+
+TypeScript introduces a few new types not present in JavaScript to help you write safer and more expressive code.
+
+* **`tuple`**: Tuple types allow you to express an array with a fixed number of elements whose types are known, but need not be the same. This is similar to Python's tuples.
+  ```typescript
+  let x: [string, number];
+  x = ["hello", 10]; // OK
+  x = [10, "hello"]; // Error
+  ```
+* **`enum`**: An enum is a way of giving more friendly names to sets of numeric values. This is a feature that will be familiar to C programmers.
+  ```typescript
+  enum Color {Red, Green, Blue}
+  let c: Color = Color.Green;
+  ```
+* **`any`**: The `any` type is the most flexible type in TypeScript. When you declare a variable with the `any` type, you can perform any operations on it without getting a compile-time error, even if those operations would not be valid for the actual runtime type of the value.
+  ```typescript
+  let a: any = "hello";
+  a = a.split("").reverse().join(""); // No compile-time error
+  a = 10;
+  a = a * 2; // No compile-time error
+  ```
+* **`unknown`**: Introduced in TypeScript 3.0, `unknown` is a safer counterpart to `any`. You can assign any value to an `unknown` variable, just like `any`. However, you can't perform arbitrary operations on an `unknown` value. Before you can perform operations on an `unknown` value, you must use a type guard to check its type.
+  ```typescript
+  let b: unknown = "hello";
+  // b = b.split("").reverse().join(""); // Compile-time error
+  if (typeof b === "string") {
+      b = b.split("").reverse().join(""); // No error after type guard
+  }
+  b = 10;
+  // b = b * 2; // Compile-time error
+  if (typeof b === "number") {
+      b = b * 2; // No error after type guard
+  }
+  ```
+* **`void`**: A function that does not return a value, implicitly or explicitly, is a `void` function. `void` is a type with no values. It's often used as the return type of functions that do not return a value.
+  ```typescript
+  function logMessage(message: string): void {
+      console.log(message);
+      // No return statement
+  }
+
+  // You can't use a `void` value
+  let v: void;
+  // v = undefined; // OK, but you can't really do anything with `v`
+  ```
+* **`never`**: The `never` type represents values that never occur. For example, a function that always throws an exception has the return type `never`, because it never completes normally. `never` is often used to indicate that a function will not return normally, which means it will either throw an error or never return because of an infinite loop.
+  ```typescript
+  function throwError(error: string): never {
+      throw new Error(error);
+  }
+
+  function infiniteLoop(): never {
+      while (true) {
+          // This loop never ends, so this function never returns
+      }
+  }
+  ```
 #### Advanced Types
 ##### Intersection Types
 ##### Union Types
