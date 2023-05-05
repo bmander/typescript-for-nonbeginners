@@ -75,9 +75,41 @@ tsc -v
 This command should return the installed version of TypeScript. If you see a version number, that means TypeScript is successfully installed and ready to use.
 
 Keep in mind that TypeScript also gets updated regularly, so it's a good idea to update your global TypeScript installation from time to time using the same command you used to install it.
-## Verifying Your Setup
+### Verifying Your Setup
 #### Running a Sample JavaScript Program
+Let's start by running a simple JavaScript program to verify that Node.js is set up correctly. Create a new file named `hello.js` and add the following code:
+```javascript
+console.log('Hello, JavaScript!');
+```
+Save the file, then run it using Node.js:
+```bash
+node hello.js
+```
+If everything is set up correctly, you should see the message `Hello, JavaScript!` output in your terminal.
 #### Compiling and Running a Sample TypeScript Program
+Now let's verify that TypeScript is working. Create a new file named `hello.ts` and add the following code:
+```typescript
+const greeting: string = 'Hello, TypeScript!';
+console.log(greeting);
+```
+This is similar to the JavaScript example, but with TypeScript we can declare the type of our variable. In this case, greeting is a string.
+
+Save the file, then compile it using the TypeScript compiler:
+```bash
+tsc hello.ts
+```
+This should create a new file in the same directory named `hello.js`. If you open this file, you'll see that the TypeScript compiler has stripped out the type annotations to produce a JavaScript file:
+```javascript
+var greeting = 'Hello, TypeScript!';
+console.log(greeting);
+```
+You can now run the compiled JavaScript file using Node.js:
+```
+node hello.js
+```
+If everything is set up correctly, you should see the message Hello, TypeScript! output in your terminal.
+
+Congratulations, you've set up and verified your Linux environment for JavaScript and TypeScript development! You're now ready to proceed with the rest of the primer.
 
 ## JavaScript Refresher
 ### Basic Syntax and Concepts
