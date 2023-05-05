@@ -36,12 +36,45 @@ These commands should return the installed versions of Node.js and npm respectiv
 
 Remember that Node.js development moves quickly, so you'll want to update Node.js and npm frequently to ensure you have the latest features and security patches. You can use the same commands used for installation to update these tools.
 ### Setting Up a Code Editor
-#### Suggestion of Code Editors (Visual Studio Code, Atom, Sublime Text)
 #### Installing and Setting Up Visual Studio Code
+To install Visual Studio Code on a Linux machine, you can download it from the official website or install it through your distribution's package manager.
+
+To install VS Code on Debian-based distributions like Ubuntu, use the following commands:
+```
+sudo apt update
+sudo apt install code
+```
+For other distributions, please refer to the official Visual Studio Code documentation.
+
+Once installed, you can open VS Code by typing code in your terminal.
 #### Installing Useful Extensions for JavaScript and TypeScript Development
+VS Code has a robust marketplace for extensions, which can enhance your development experience. Here are a few extensions you might find helpful:
+* **ESLint**: ESLint is a static code analysis tool for identifying problematic patterns found in JavaScript code. It's a great tool to ensure your code adheres to a specific coding style.
+* **Prettier - Code formatter**: Prettier is an opinionated code formatter that integrates with VS Code. It helps to maintain a consistent code style by automatically formatting your code.
+* **Visual Studio IntelliCode**: IntelliCode provides AI-assisted code recommendations based on best practices from thousands of open source repos.
+
+To install an extension, click on the Extensions view icon on the Sidebar (or press `Ctrl+Shift+X`), then search for the extension you want and click on Install.
 ### Installing TypeScript
 #### Explanation of the TypeScript Compiler
+TypeScript is a superset of JavaScript that adds static type definitions. It provides the ability to use features from recent versions of JavaScript and some additional features that are not available in JavaScript, such as interfaces and enums.
+
+However, browsers and Node.js understand JavaScript, not TypeScript. That's where the TypeScript compiler (`tsc`) comes in. The TypeScript compiler takes your TypeScript code (`.ts` files) and compiles it down to JavaScript code (`.js` files). This process is known as "transpilation".
+
+The TypeScript compiler also checks your code for errors before it's run, which is a significant advantage over JavaScript. This allows you to catch and fix errors during development rather than runtime.
 #### Instructions for Installation via npm
+Now that we have Node.js and npm set up, installing TypeScript is straightforward. You can install TypeScript globally on your machine by running the following command in your terminal:
+```
+sudo npm install -g typescript
+```
+The `-g` flag stands for "global" and means that TypeScript will be installed globally on your machine, not just in the current directory. This will allow you to use the `tsc` command from anywhere in your system.
+
+After installation, you can verify that TypeScript was correctly installed by checking its version:
+```
+tsc -v
+```
+This command should return the installed version of TypeScript. If you see a version number, that means TypeScript is successfully installed and ready to use.
+
+Keep in mind that TypeScript also gets updated regularly, so it's a good idea to update your global TypeScript installation from time to time using the same command you used to install it.
 ## Verifying Your Setup
 #### Running a Sample JavaScript Program
 #### Compiling and Running a Sample TypeScript Program
