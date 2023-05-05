@@ -632,7 +632,7 @@ class Dog(Animal):
         return self.name + "says: woof!"
 
 dog = Dog("Rover")
-print(dog.speak())  # Outputs: Rover says: Woof!
+print(dog.speak())  # Outputs: Rover says: woof!
 ```
 
 In this example, Dog extends Animal and inherits its properties and methods. Dog also overrides the speak method.
@@ -688,6 +688,65 @@ In this example, even though we're using `class` and `extends`, JavaScript is st
 
 Understanding the prototypal nature of JavaScript is crucial for understanding how objects, methods, and inheritance work in JavaScript. It's one of the key differences between JavaScript and classically-inherited languages like Python and C++.
 #### JavaScript Module System: CommonJS, AMD, ES6 Modules
+JavaScript has evolved significantly over the years, particularly in how it handles modules. A module is a piece of code that is encapsulated and can be imported and used in other parts of an application. The module system in JavaScript has gone through several iterations, including CommonJS, AMD, and ES6 Modules.
+
+* **CommonJS**: CommonJS is a module format that gained popularity through Node.js. It uses the `require` function to import modules and `module.exports` to export them.
+
+  Here's an example of a CommonJS module:
+  ```javascript
+  // math.js
+  module.exports = {
+      add: function(a, b) {
+          return a + b;
+      }
+  };
+
+  // app.js
+  var math = require('./math');
+  console.log(math.add(1, 2));  // Outputs: 3
+  ```
+  
+  CommonJS is synchronous and designed for server-side development. This means that when a module is required, the entire script is loaded and executed before moving on to the next line of code. This behavior is fine on the server side where I/O operations are fast, but it's not ideal for client-side development due to network latency.
+* **AMD (Asynchronous Module Definition)**: AMD was created to solve the synchronous loading issue in CommonJS. It's designed for the browser and loads modules asynchronously. RequireJS is a popular implementation of AMD.
+
+  Here's an example of an AMD module using RequireJS:
+  ```javascript
+  // math.js
+  define([], function() {
+      return {
+          add: function(a, b) {
+              return a + b;
+          }
+      };
+  });
+
+  // app.js
+  require(['math'], function(math) {
+      console.log(math.add(1, 2));  // Outputs: 3
+  });
+  ```
+* **ES6 Modules**: ES6 (ES2015) introduced native support for modules in JavaScript. ES6 modules use an export keyword to export functions, objects or values from the module, and import keyword to import them into other scripts.
+  
+  Here's an example of an ES6 module:
+  ```javascript
+  // math.js
+  export function add(a, b) {
+      return a + b;
+  }
+
+  // app.js
+  import { add } from './math.js';
+  console.log(add(1, 2));  // Outputs: 3
+  ```
+  
+  ES6 modules are statically analyzed, meaning the imports and exports are resolved at compile time rather than runtime. This has several benefits, such as enabling better tooling (tree shaking, static analysis), and top-level variables in modules don't pollute the global namespace. Also, ES6 modules are designed to be able to work both synchronously and asynchronously, which makes them versatile for both client-side and server-side JavaScript.
+  
+  The `import` and `export` syntax in ES6 is more declarative and easier to understand and use than the CommonJS and AMD formats. However, browser support for ES6 modules is still not universal, and older browsers don't support them at all. This is why transpilation tools like Babel, along with module bundlers like Webpack, are commonly used to convert ES6 module syntax to a format that can be understood by more browsers.
+  
+  Unlike Python, which has a standardized method for importing modules (using the `import` keyword), JavaScript has gone through several iterations of module systems, each with their own syntax and use cases. This can make JavaScript's module systems seem more complicated, but it also provides flexibility in how modules can be loaded and used, which can be beneficial depending on the specific requirements of a project.
+  
+  C, on the other hand, handles code organization differently. There is no direct concept of a "module" in C. Instead, C uses a preprocessor directive, #include, to include different header files. These header files typically contain function declarations (also known as function prototypes) which are then linked to the appropriate function definitions during the linking stage of the build process.
+
 #### The Role of Babel and Transpiling ES6+ Code
 
 ## TypeScript Basics
