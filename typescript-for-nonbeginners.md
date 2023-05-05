@@ -160,7 +160,45 @@ var x = 5;
 
 In contrast, Python's scope is determined by the function, class, or module in which a variable is declared, and it doesn't have variable hoisting. In C, a variable's scope is determined by the block in which it's declared, and it also doesn't have variable hoisting.
 #### Data Types
-##### Primitive Types: number, string, boolean, null, undefined, symbol
+JavaScript has a dynamic and weakly typed system, which means you don't have to declare the type of a variable when you create it, and you can change a variable's type later in your code.
+##### Primitive Types
+JavaScript has seven primitive types: `number`, `string`, `boolean`, `null`, `undefined`, `symbol`, and `bigint`
+* `number`: Unlike many other programming languages, JavaScript does not distinguish between integer and floating-point values. All numbers in JavaScript are represented as floating-point values. JavaScript represents numbers using the 64-bit floating-point format defined by the IEEE 754 standard.
+  ```javascript
+  let count = 10;         // integer
+  let weight = 88.6;      // floating-point
+  ```
+  
+  In contrast, Python has separate `int` and `float` types, while C has several number types including `int`, `float`, and `double`.
+* `string`: A sequence of characters. Strings in JavaScript are immutable.
+  ```javascript
+  let message = "Hello, world!";
+  ```
+  Python and C also have string types, but in C, strings are arrays of characters and are not innately supported as in JavaScript or Python.
+* `boolean`: Represents a logical entity and can have two values: `true` or `false`.
+  ```javascript
+  let isRead = false;
+  ```
+* `null`: This type also only has one value, `null`. This is usually used to explicitly indicate that a variable should have no value.
+  ```javascript
+  let empty = null;
+  ```
+* `undefined`: This type only has one value, `undefined`. A variable that has been declared but has not been assigned a value has the value undefined.
+  ```javascript
+  let test;
+  console.log(test);  // undefined
+  ```
+  Python raises an error if you try to use a variable that hasn't been assigned. C behavior is undefined if a variable is used before it's assigned.
+* `symbol`: Introduced in ES6, a `symbol` is a unique and immutable data type and is often used as an identifier for object properties.
+  ```javascript
+  let sym = Symbol('description');
+  ```
+  Neither Python nor C has an equivalent to JavaScript's `symbol`.
+* `bigint`: This type was introduced in ES2020 to represent integers of arbitrary length. A `BigInt` is created by appending n to the end of an integer:
+  ```javascript
+  const bigNumber = 1234567890123456789012345678901234567890n;
+  ```
+  Neither Python nor C have a direct equivalent to JavaScript's bigint built into the language. In Python, the built-in int type can handle arbitrarily large integers, but they are not the same as JavaScript's bigint because they don't require a special notation. In C, you would need to use a library to work with arbitrarily large integers.
 ##### Composite Types: object, array, function
 #### Control Flow
 ##### Conditional Statements: if, else, switch
