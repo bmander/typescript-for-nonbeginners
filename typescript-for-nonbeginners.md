@@ -265,6 +265,48 @@ JavaScript has several constructs for conditional execution of code: `if`, `else
   ```
 The switch statement in JavaScript is quite similar to that in C, including the use of break to prevent fallthrough. Python doesn't have a switch statement, but similar functionality can be achieved with a dictionary of functions or a series of if, elif, and else statements.
 ##### Loops: for, while, do...while, for...in, for...of
+Loops are a fundamental concept in programming, allowing for repeated execution of a block of code. JavaScript provides several looping mechanisms.
+* `for`: The for loop runs a block of code a specified number of times. It consists of three expressions: initialization, condition, and incrementation.
+  ```javascript
+  for (let i = 0; i < 5; i++) {
+      console.log(i);  // prints 0 through 4
+  }
+  ```
+  This type of for loop is common in many programming languages, including Python (via the range() function) and C.
+* `while`: The while loop continues to execute a block of code as long as its condition evaluates to true.
+  ```javascript
+  let i = 0;
+  while (i < 5) {
+      console.log(i);  // prints 0 through 4
+      i++;
+  }
+  ```
+  `while` loops are also present in both Python and C, with very similar behavior to JavaScript.
+* `do...while`: This is similar to the while loop, but the condition is checked after the execution of the block of code. This guarantees that the block will be executed at least once.
+  ```javascript
+  let i = 0;
+  do {
+      console.log(i);  // prints 0 through 4
+      i++;
+  } while (i < 5);
+  ```
+  Python doesn't have a built-in `do...while` construct, although you can achieve similar functionality with a while loop and a break statement. C, on the other hand, does have a `do...while` loop that behaves just like JavaScript's.
+* `for...in`: This loop is used to iterate over the enumerable properties of an object.
+  ```javascript
+  let obj = {a: 1, b: 2, c: 3};
+  for (let prop in obj) {
+      console.log(`${prop}: ${obj[prop]}`);
+  }
+  ```
+  Python has a similar construct in the form of the `for...in` loop for iterating over elements in a sequence or keys in a dictionary. C doesn't have a built-in construct for this, although you can iterate over arrays using a standard for loop.
+* `for...of`: Introduced in ES6, the for...of loop iterates over data that iterable object defines to be iterated over (e.g., Array, Map, Set, String, TypedArray, arguments object and so on).
+  ```javascript
+  let array = [1, 2, 3, 4, 5];
+  for (let value of array) {
+      console.log(value);  // prints 1 through 5
+  }
+  ```
+  Python's `for...in` loop can behave similarly when used on iterable objects. C doesn't have an equivalent loop construct, as iteration generally involves either a traditional for loop or pointer arithmetic.
 #### Functions
 ##### Function Declaration and Expression
 ##### Arrow Functions
