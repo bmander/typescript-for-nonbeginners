@@ -613,6 +613,80 @@ Non-blocking I/O in JavaScript allows the execution of other code while waiting 
 
 In contrast, languages like C and Python have a more traditional blocking I/O model by default, where execution stops until the I/O operation is completed. For non-blocking I/O, C developers can use system level calls and libraries like `libuv` (which is also used by Node.js), while Python developers can use the `asyncio` library, but these require more explicit handling compared to JavaScript.
 #### Prototypal Inheritance vs. Classical Inheritance
+JavaScript is unique among many programming languages because it uses prototypal inheritance rather than classical inheritance. This distinction fundamentally changes how objects and classes interact.
+
+In **classical inheritance**, such as in Python or C++, classes are blueprints that define properties and methods. You create instances of a class, and these instances inherit all the properties and methods of the class. Inheritance in this case is a "is-a" relationship, and you can create class hierarchies with the use of the extends keyword (in Python, it's the class definition in the parentheses).
+
+Here's an example of classical inheritance in Python:
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return self.name + "says: woof!"
+
+dog = Dog("Rover")
+print(dog.speak())  # Outputs: Rover says: Woof!
+```
+
+In this example, Dog extends Animal and inherits its properties and methods. Dog also overrides the speak method.
+
+In contrast, **prototypal inheritance** in JavaScript works with objects all the way down. Instead of classes, you create objects, and these objects can inherit properties and methods from other objects. This is often described as a "prototype chain". When you attempt to access a property or method of an object, JavaScript will look up the prototype chain until it finds the property/method or until it reaches the end of the chain.
+
+Here's an example of prototypal inheritance in JavaScript:
+```javascript
+let animal = {
+    name: true,
+    speak: function() {
+        if (this.speaks) {
+            return "Generic animal noise!";
+        }
+    }
+};
+
+let dog = Object.create(animal);
+dog.speak = function() {
+    if (this.speaks) {
+        return "Woof!";
+    }
+};
+
+console.log(dog.speak());  // Outputs: Woof!
+```
+
+In this example, `dog` is an object that prototypes from the `animal` object, and it overrides the `speak` method. When `dog.speak()` is called, JavaScript looks for the `speak` method on the `dog` object first before looking up the prototype chain.
+
+With the introduction of ES6, JavaScript introduced the `class` syntax which makes it look like it's using classical inheritance, but under the hood, it's still prototypal inheritance. The `class` syntax in JavaScript is just syntactic sugar over prototypal inheritance.
+```javascript
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+  
+    speak() {
+        return "Generic animal noise!";
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        return this.name + "says: woof!";
+    }
+}
+
+const dog = new Dog("Rover");
+console.log(dog.speak());  // Outputs: Rover says: woof!
+```
+
+In this example, even though we're using `class` and `extends`, JavaScript is still using prototypal inheritance behind the scenes. It's just that the syntax makes it easier for developers coming from a class-based language to understand and use.
+
+Understanding the prototypal nature of JavaScript is crucial for understanding how objects, methods, and inheritance work in JavaScript. It's one of the key differences between JavaScript and classically-inherited languages like Python and C++.
 #### JavaScript Module System: CommonJS, AMD, ES6 Modules
 #### The Role of Babel and Transpiling ES6+ Code
 
