@@ -159,7 +159,6 @@ var x = 5;
 ```
 
 In contrast, Python's scope is determined by the function, class, or module in which a variable is declared, and it doesn't have variable hoisting. In C, a variable's scope is determined by the block in which it's declared, and it also doesn't have variable hoisting.
-console.log(x);  // 5
 #### Data Types
 ##### Primitive Types: number, string, boolean, null, undefined, symbol
 ##### Composite Types: object, array, function
