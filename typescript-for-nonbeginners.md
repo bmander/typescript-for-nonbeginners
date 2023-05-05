@@ -199,7 +199,32 @@ JavaScript has seven primitive types: `number`, `string`, `boolean`, `null`, `un
   const bigNumber = 1234567890123456789012345678901234567890n;
   ```
   Neither Python nor C have a direct equivalent to JavaScript's bigint built into the language. In Python, the built-in int type can handle arbitrarily large integers, but they are not the same as JavaScript's bigint because they don't require a special notation. In C, you would need to use a library to work with arbitrarily large integers.
-##### Composite Types: object, array, function
+##### Composite Types
+In addition to primitive types, JavaScript has composite types: `object`, `array`, and `function`
+* `object`: An unordered collection of related data of varied types (properties) and functionality (methods). When a variable is assigned an object, what's actually stored in the variable is a reference to the memory location where the object is stored.
+  ```javascript
+  let person = {
+    name: 'John Doe',
+    age: 30
+  };
+  ```
+  Python has similar functionality with dictionaries, and C has struct, although JavaScript's objects are more flexible.
+* `array`: An ordered list of values that can be of any type. Like objects, variables assigned an array actually store a reference to the array's memory location.
+  ```javascript
+  let numbers = [1, 2, 3, 4, 5];
+  ```
+  Python has lists which are very similar to JavaScript's arrays. C has arrays, but they must be of a single type and have a fixed size.
+* `function`: Functions in JavaScript are first-class objects. This means that, like other objects, you can pass them as arguments to other functions, return them as values from other functions, assign them to variables, store them in data structures, etc. Functions are defined using the function keyword:
+  ```javascript
+  function greet(name) {
+    return `Hello, ${name}!`;
+  }
+
+  console.log(greet("World"));  // Hello, World!
+  ```
+  Python treats functions as first-class objects as well. In C, while you can pass function pointers around, functions are not first-class objects in the same way as in JavaScript or Python.
+  
+In sum, JavaScript offers a versatile set of data types, both primitive and composite. Its dynamic nature allows for great flexibility, but can also be a source of confusion and bugs, which TypeScript helps to address.
 #### Control Flow
 ##### Conditional Statements: if, else, switch
 ##### Loops: for, while, do...while, for...in, for...of
