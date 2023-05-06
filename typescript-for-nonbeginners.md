@@ -1259,7 +1259,7 @@ console.log(greeter.greet()); // "Hello, world"
 When transpiled to JavaScript (ES5), the class becomes a constructor function:
 
 ```javascript
-var Greeter = /** @class */ (function () {
+var Greeter = (function () {
     function Greeter(message) {
         this.greeting = message;
     }
@@ -1268,6 +1268,7 @@ var Greeter = /** @class */ (function () {
     };
     return Greeter;
 }());
+
 // Usage:
 var greeter = new Greeter("world");
 console.log(greeter.greet()); // "Hello, world"
