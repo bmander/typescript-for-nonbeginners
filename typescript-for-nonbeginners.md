@@ -1482,7 +1482,32 @@ import greet from './greet';
 greet('Alice');
 ```
 
-Default exports can be particularly useful for modules that expose a single primary functionality, while possibly also exporting some secondary entities.
+Default exports can be particularly useful when a module or a file is dedicated to a single functionality or a single class. For example, consider a scenario where you're developing a math library and have a dedicated file for a Matrix class. This class is the primary export of this file, although the file may also export some auxiliary functions or constants.
+
+```typescript
+// Matrix.ts
+export default class Matrix {
+    // Matrix implementation...
+}
+
+export function multiplyMatrices(matrix1: Matrix, matrix2: Matrix): Matrix {
+    // Function to multiply two Matrix instances...
+}
+
+export const IDENTITY_MATRIX = new Matrix(/* identity matrix data */);
+```
+
+In this case, when someone imports from `Matrix.ts`, they're likely interested in the `Matrix` class itself, hence making it the default export is appropriate:
+
+```typescript
+// app.ts
+import Matrix, { multiplyMatrices, IDENTITY_MATRIX } from './Matrix';
+
+let matrix1 = new Matrix(/* data */);
+let matrix2 = IDENTITY_MATRIX;
+
+let result = multiplyMatrices(matrix1, matrix2);
+```
 
 TypeScript, like JavaScript, doesn't require a name for a default export at the point of export (it can be an anonymous function or class), but unlike JavaScript, TypeScript needs to know the type of the exported entity.
 
