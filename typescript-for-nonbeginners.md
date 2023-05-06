@@ -1401,10 +1401,94 @@ class GenericNumber<T> {
 }
 ```
 #### Generic Interfaces
+Similarly, we can use generics to define reusable interfaces:
+```typescript
+interface GenericIdentityFn<T> {
+    (arg: T): T;
+}
+
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let myIdentity: GenericIdentityFn<number> = identity;
+
+console.log(myIdentity(100));
+```
+In this example, the `GenericIdentityFn` interface works with any type `T`. We instantiate it with `number` when we declare `myIdentity`.
 ### Modules and Namespaces
 #### Introduction to Modules
+In TypeScript, a module is a piece of code that is encapsulated in its own scope and can expose certain parts of its code to other modules using export and import statements. This is similar to modules in Python, where files can be imported using import statements to use the functions, classes, or variables defined in them.
+
+In JavaScript, modules were introduced later in its evolution, with the introduction of ES6, and are similar to how TypeScript handles modules. However, prior to ES6, JavaScript did not have a built-in module system, and developers used patterns or libraries to implement module-like behavior.
+
+In TypeScript, any file containing a top-level import or export is considered a module. For instance:
+
+```typescript
+// math.ts
+export function add(a: number, b: number): number {
+    return a + b;
+}
+```
+In the above TypeScript code, we have a module called `math.ts` which exports a function `add`. This function can now be imported and used in other modules.
+
+Modules in TypeScript are different from namespaces (which we will discuss later) and are more aligned with the modern JavaScript module system. Importantly, modules can also include type information, a feature absent in JavaScript but aligns with TypeScript's goal of enhancing JavaScript with strong typing.
+
+In contrast to JavaScript, TypeScript also provides powerful features to work with modules, such as path mapping and wildcard module declarations, which provide flexibility for structuring larger code bases.
+
+Keep in mind that TypeScript will compile to a module system that you specify (such as CommonJS, AMD, SystemJS, or ES6 modules), and understanding the nuances of these target systems is crucial when working with modules in TypeScript. We'll delve more into exporting and importing modules, default exports, and the interplay between namespaces and modules in the following sections.
 #### Exporting and Importing Modules
+In TypeScript, you can export variables, functions, classes, type aliases, interfaces, and more. To export an entity, use the `export` keyword. Here is an example of exporting a function and a variable:
+```typescript
+// math.ts
+export const PI = 3.14;
+
+export function add(a: number, b: number): number {
+    return a + b;
+}
+```
+To import an exported entity, use the `import` keyword followed by the `{}` containing the names of the entities you want to import and `from` followed by the path to the module (file). Here's how you would import the add function and PI constant from the math.ts module:
+
+```typescript
+// app.ts
+import { add, PI } from './math';
+
+console.log(add(PI, PI));
+```
+
+This process of exporting and importing is akin to how Python uses import to gain access to functions and variables defined in different files. However, Python does not have the concept of explicit exports; anything defined in the file is accessible when imported.
+
+The type information of the exported entities is carried along with the imports, enhancing the type safety of your TypeScript code. This contrasts with JavaScript, where the imported entities are dynamically typed.
+
+One thing to note is that TypeScript, unlike JavaScript, has different module resolution strategies: classic and node. The node strategy is the most common and works like Node.js module resolution, whereas classic is TypeScript's original resolution strategy.
 #### Default Exports
+Default exports are a feature that TypeScript shares with JavaScript ES6. They allow a module to designate one of its members as the default export, simplifying import syntax for consumers of the module. A module can only have one default export.
+
+To create a default export, use the `export default` statement. This can be applied to functions, classes, or any other valid TypeScript entity. Here's an example of a default export for a function:
+
+```typescript
+// greet.ts
+export default function greet(name: string): void {
+    console.log(`Hello, ${name}!`);
+}
+```
+
+To import a default export, you don't use curly braces `{}` around the imported entity. Instead, you assign it directly to a local variable. Here's how you would import the default `greet` function from the `greet.ts` module:
+
+```typescript
+// app.ts
+import greet from './greet';
+
+greet('Alice');
+```
+
+Default exports can be particularly useful for modules that expose a single primary functionality, while possibly also exporting some secondary entities.
+
+TypeScript, like JavaScript, doesn't require a name for a default export at the point of export (it can be an anonymous function or class), but unlike JavaScript, TypeScript needs to know the type of the exported entity.
+
+In comparison, Python doesn't have a direct equivalent to default exports. In Python, everything defined in a file is accessible when the file is imported, and there is no specific entity identified as the 'default'.
+
+Remember, while default exports can make your code more readable when a module has a clear primary function, they can be less explicit than named exports. It's essential to have a clear understanding of what a module exports, especially when using TypeScript's type system. 
 #### Introduction to Namespaces
 #### Merging Namespaces and Modules
 #### Using Modules vs. Namespaces
