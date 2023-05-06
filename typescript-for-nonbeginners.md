@@ -1229,12 +1229,125 @@ c.reset = function () {
 }
 ```
 ### Classes
-#### Introduction to Classes
+Classes are a fundamental part of TypeScript. They are not native to JavaScript, although ECMAScript 2015 introduced a similar construct. Neither Python nor C have an equivalent to TypeScript classes, making this a unique topic to cover.
+#### Prototype-Based Class System
+Classes in TypeScript are blueprints for creating objects. They encapsulate data and the functions that manipulate that data. However, it's important to understand that despite the introduction of the `class` syntax, TypeScript remains fundamentally prototype-based at its heart, much like JavaScript.
+
+TypeScript introduces a class syntax, but this is essentially syntactic sugar over JavaScript's existing prototype-based system. When TypeScript is transpiled to JavaScript, class definitions are converted to a function (for the constructor) and a series of assignments to the constructor's prototype for methods.
+
+This means that, underneath the class syntax, TypeScript and JavaScript share the same prototype-based system. This is crucial to remember when you're dealing with inheritance and property scope, or if you're interfacing with JavaScript libraries.
+
+Here's an example of a class in TypeScript:
+```typescript
+class Greeter {
+    greeting: string;
+
+    constructor(message: string) {
+        this.greeting = message;
+    }
+
+    greet() {
+        return "Hello, " + this.greeting;
+    }
+}
+
+// Usage:
+let greeter = new Greeter("world");
+console.log(greeter.greet()); // "Hello, world"
+```
+
+When transpiled to JavaScript (ES5), the class becomes a constructor function:
+
+```javascript
+var Greeter = /** @class */ (function () {
+    function Greeter(message) {
+        this.greeting = message;
+    }
+    Greeter.prototype.greet = function () {
+        return "Hello, " + this.greeting;
+    };
+    return Greeter;
+}());
+// Usage:
+var greeter = new Greeter("world");
+console.log(greeter.greet()); // "Hello, world"
+```
+
+In this transpiled code, you can see JavaScript's prototype-based nature. The `greet` method is added to the prototype of the constructor function, not to instances of the object. This is the same mechanism that TypeScript's classes use under the hood. So, while TypeScript introduces a more familiar class-based syntax for programmers coming from languages like C or Python, it remains true to JavaScript's prototype-based roots.
 #### Inheritance and Extending Classes
-#### Public, private, and protected modifiers
-#### Readonly modifier
+TypeScript supports inheritance, allowing classes to extend others and reuse common logic.
+```typescript
+class Animal {
+    move(distanceInMeters: number = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`);
+    }
+}
+
+class Dog extends Animal {
+    bark() {
+        console.log('Woof! Woof!');
+    }
+}
+
+// Usage:
+let dog = new Dog();
+dog.bark(); // "Woof! Woof!"
+dog.move(10); // "Animal moved 10m."
+```
+#### `public`, `private`, and `protected` modifiers
+TypeScript introduces `public`, `private`, and `protected` modifiers to control access to class members, which JavaScript lacks.
+```typescript
+class Animal {
+    public name: string;
+    private type: string;
+    protected age: number;
+
+    constructor(name: string, type: string, age: number) {
+        this.name = name;
+        this.type = type;
+        this.age = age;
+    }
+}
+```
+#### `readonly` modifier
+The readonly keyword marks a class member as unmodifiable after assignment, similar to the const keyword in C.
+```typescript
+class Octopus {
+    readonly name: string;
+
+    constructor(theName: string) {
+        this.name = theName;
+    }
+}
+
+// Usage:
+let octopus = new Octopus("Inky");
+// octopus.name = "Blinky"; // Error, name is readonly
+```
 #### Static Properties
+TypeScript supports static properties in classes, which are shared among all instances of a class.
+```typescript
+class Grid {
+    static origin = {x: 0, y: 0};
+
+    calculateDistanceFromOrigin(point: {x: number, y: number}) {
+        let xDist = point.x - Grid.origin.x;
+        let yDist = point.y - Grid.origin.y;
+        return Math.sqrt(xDist * xDist + yDist * yDist);
+    }
+}
+```
 #### Abstract Classes
+Abstract classes provide a base class from which other classes can be derived. They may not be instantiated directly.
+```typescript
+abstract class Animal {
+    abstract makeSound(): void;
+
+    move(): void {
+        console.log("Moving along...");
+    }
+}
+```
 ### Generics in TypeScript
 #### Introduction to Generics
 #### Generic Constraints
