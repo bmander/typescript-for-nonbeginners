@@ -1109,14 +1109,125 @@ In the example above, padLeft can take a `string` or `number` as the second argu
 
 In addition to these features, TypeScript also supports arrow functions, similar to JavaScript (ES6) and Python's lambda functions, and function type interfaces, providing even more control over function types.
 ### Interfaces
+Interfaces in TypeScript allow you to describe the shape and capabilities of an object, similar to defining a contract for a class. They are not present in JavaScript, Python, or C, making them a unique feature of TypeScript that enhances code clarity and robustness.
 #### Defining an Interface
+An interface is defined using the `interface` keyword, followed by the interface name and a set of curly brackets. Within the brackets, you define properties and their types.
+```typescript
+interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+// Usage:
+let johnDoe: Person = {
+    firstName: "John",
+    lastName: "Doe"
+};
+```
 #### Optional Properties
+Optional properties are denoted by a `?` following the property name.
+
+```typescript
+interface Person {
+    firstName: string;
+    lastName: string;
+    middleName?: string;
+}
+
+// Usage:
+let janeDoe: Person = {
+    firstName: "Jane",
+    lastName: "Doe",
+};
+```
+
 #### Readonly Properties
+
+TypeScript allows properties in an interface to be marked as `readonly`, meaning their values can't be changed once they are assigned. This is similar to the `const` keyword in C.
+
+```typescript
+interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+
+// Usage:
+let point: Point = { x: 10, y: 20 };
+// point.x = 30; // Error, x is readonly
+```
+
 #### Function Types in Interfaces
+Interfaces can also define function types. This allows you to specify the function signature that an object is expected to have.
+```typescript
+interface MathFunc {
+    (x: number, y: number): number;
+}
+
+// Usage:
+let add: MathFunc = function(x: number, y: number) { return x + y; };
+```
 #### Indexable Types in Interfaces
+Indexable types allow you to index any object using a specified type. This is similar to Python's sequence types but isn't available in JavaScript or C.
+```typescript
+interface StringArray {
+    [index: number]: string;
+}
+
+// Usage:
+let myArray: StringArray;
+myArray = ["Bob", "Fred"];
+let myStr: string = myArray[0];
+```
 #### Class Types in Interfaces
+Interfaces can describe classes, emphasizing the instance side of classes.
+```typescript
+interface ClockInterface {
+    currentTime: Date;
+    setTime(d: Date): void;
+}
+
+// Usage:
+class Clock implements ClockInterface {
+    currentTime: Date = new Date();
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+}
+```
 #### Extending Interfaces
+Interfaces can extend other interfaces, allowing you to reuse components of one interface in another.
+
+```typescript
+interface Shape {
+    color: string;
+}
+
+interface Square extends Shape {
+    sideLength: number;
+}
+
+// Usage:
+let square: Square = { color: "blue", sideLength: 10 };
+```
 #### Hybrid Types
+Interfaces can also represent hybrid types, which are objects that act as a combination of some of the types.
+```typescript
+interface Counter {
+    (start: number): string;
+    interval: number;
+    reset(): void;
+}
+
+// Usage:
+let c: Counter;
+c = function (start: number) {
+    // implementation...
+} as Counter;
+c.interval = 5;
+c.reset = function () {
+    // implementation...
+}
+```
 ### Classes
 #### Introduction to Classes
 #### Inheritance and Extending Classes
