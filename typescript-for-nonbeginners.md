@@ -1063,10 +1063,51 @@ var hoistedVar = "I am hoisted!";
 In TypeScript, it's important to note that `let` and `const` are also hoisted, but they are not initialized to undefined like `var`. Accessing a `let` or `const` variable before its declaration will result in a `ReferenceError`.
 ### Functions
 #### Function Types
+In TypeScript, you can define the input types and the return type of a function, providing better type safety. This is similar to specifying types in C and Python (3.5 onwards) function definitions.
+```typescript
+function add(x: number, y: number): number {
+    return x + y;
+}
+```
 #### Optional and Default Parameters
+TypeScript supports optional parameters, declared with a ? after the parameter name. This is not available in JavaScript or C, but is similar to Python's default arguments.
+```typescript
+function greet(name?: string) {
+    return `Hello, ${name ? name : "Guest"}`;
+}
+```
+Default parameters can also be specified in TypeScript, like in Python and unlike C or JavaScript (prior to ES6).
+```typescript
+function greet(name = "Guest") {
+    return `Hello, ${name}`;
+}
+```
 #### Rest Parameters
+TypeScript, like JavaScript, supports rest parameters, allowing functions to accept any number of arguments of a specified type. This is similar to Python's `\*args` but not available in C.
+```typescript
+function buildName(firstName: string, ...restOfName: string[]) {
+    return firstName + " " + restOfName.join(" ");
+}
+```
 #### Callback Functions
+Callback functions in TypeScript work like in JavaScript. However, TypeScript allows you to type the callback function, enhancing safety and clarity.
+```typescript
+function processArray(arr: number[], callback: (a: number) => void) {
+    arr.forEach(callback);
+}
+```
 #### Overloads
+TypeScript supports function overloading, a feature not available in JavaScript or Python but common in C. Overloading allows multiple function types for the same function, a powerful tool for function design.
+```typescript
+function padLeft(value: string, padding: string | number) {
+    // ...
+}
+
+let indentedString = padLeft("Hello world", true); // errors at compile time
+```
+In the example above, padLeft can take a `string` or `number` as the second argument. If any other type is provided, TypeScript will throw an error at compile time.
+
+In addition to these features, TypeScript also supports arrow functions, similar to JavaScript (ES6) and Python's lambda functions, and function type interfaces, providing even more control over function types.
 ### Interfaces
 #### Defining an Interface
 #### Optional Properties
