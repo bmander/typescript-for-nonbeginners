@@ -1908,8 +1908,120 @@ On the other hand, C would be a better choice for low-level programming, systems
 
 ## TypeScript Best Practices
 ### Typing Strategies
+**Make Use of Type Inference**: TypeScript has a powerful type inference system, and you should take advantage of it whenever possible. Type inference can make your code cleaner and easier to read.
+```typescript
+let x = 10; // TypeScript infers that x is a number
+```
+**Explicitly Type Function Return Values**: While TypeScript does a good job at inferring types in many situations, it is often a good practice to explicitly type function return values. This can make your intent clearer and can catch potential bugs.
+```typescript
+function greet(name: string): string {
+  return "Hello, " + name;
+}
+```
+**Use Union Types for Flexibility**: TypeScript allows you to specify that a value can be one of several types using union types. This can give you a level of flexibility that isn't available in languages like C or Python.
+```typescript
+type StringOrNumber = string | number;
+
+let x: StringOrNumber;
+x = "Hello"; // Okay
+x = 42; // Okay
+```
+**Embrace Literal Types**: Literal types allow you to specify exact values that a variable can have. This can be useful when dealing with a limited set of possible values, like the days of the week, for example.
+```typescript
+type DayOfWeek = "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun";
+
+let today: DayOfWeek;
+today = "Mon"; // Okay
+today = "Fun"; // Error
+```
+
+**Use Interfaces and Type Aliases to Define Object Shapes**: In TypeScript, you can use interfaces or type aliases to describe the shape of an object. This can be especially useful in representing complex data structures.
+```typescript
+interface Person {
+  name: string;
+  age: number;
+}
+
+let john: Person = { name: "John", age: 30 };
+```
+**Use Type Guards for Runtime Type Checking**: While TypeScript helps catch type errors at compile-time, you may need to perform runtime type checking in some scenarios, especially when dealing with user input or external data sources. Type guards can help with this.
+```typescript
+function isString(test: any): test is string {
+  return typeof test === "string";
+}
+
+function printLength(input: number | string) {
+  if (isString(input)) {
+    // Within this block, 'input' is treated as 'string'
+    console.log(input.length);
+  }
+}
+```
+**Use Optional Types for Optional Values**: TypeScript allows you to specify optional parameters, properties, or return values using the `?` operator. This can help prevent null and undefined errors.
+```typescript
+function greet(name?: string) { // name is optional
+    return name ? `Hello, ${name}` : 'Hello';
+}
+```
+**Avoid `any` Type**: The `any` type is a powerful escape hatch, but it essentially turns off TypeScript's type checking. Use it sparingly, and consider other options like `unknown` or a specific type before resorting to `any`.
 ### Code Organization
+**Modularize Your Code**: TypeScript, like Python and C, supports the separation of code into modules. Modules encapsulate related code into a single unit of functionality which can be exported and used in other parts of your application. This practice promotes code reuse and separation of concerns.
+**Use Namespaces**: In addition to modules, TypeScript also supports namespaces which can help to group related code and avoid naming collisions. However, with the advent of ES6 modules, the need for namespaces has diminished.
+**Leverage Interfaces and Type Aliases for Shape Definition**: TypeScript's interfaces and type aliases are powerful tools for defining shapes of objects. They can be used to describe the structure of classes, function parameters, objects, etc. They help in self-documenting the code and improving the maintainability.
+**Organize Related Code into Classes**: TypeScript, unlike C but similar to Python, supports object-oriented programming with classes. Classes can encapsulate related functions (methods) and variables (properties), providing a way to bundle data and functionality.
+**Use Decorators for Metadata**: Decorators allow you to add metadata to your class definitions and members. They can be a powerful tool for code organization, especially when used with frameworks like Angular. Note that decorators are a proposed feature for JavaScript and are not available in Python or C.
+```typescript
+@Component({
+    selector: 'my-component',
+    template: '<div>Hello, {{name}}</div>',
+})
+export class MyComponent {
+    name: string = 'Alice';
+}
+```
 ### Common Pitfalls and How to Avoid Them
+**Implicit any types**: One of the main benefits of TypeScript is its type system, but if you're not careful, you can end up with variables of type any, which essentially turns off TypeScript's type checking.
+```typescript
+let data; // Implicitly 'any'
+data = "Hello";
+data = 10; // No error
+```
+
+To avoid this, you can turn on the `noImplicitAny` compiler option, which will raise an error whenever a variable's type is implicitly `any`.
+**Understanding null and undefined**: In TypeScript, `null` and `undefined` are actually types. They're not exactly equivalent to Python's `None` or C's `NULL`. For example, if you declare a variable of type number, it's not valid to assign `null` or `undefined` to it unless you include them in the type declaration.
+```typescript
+let x: number;
+x = null; // Error
+x = undefined; // Error
+```
+To avoid errors with null and undefined, you can enable the `strictNullChecks` compiler option, which ensures you can't assign `null` or `undefined` to something unless you explicitly include them in the type.
+**Type assertions**: TypeScript allows you to override its inferred types using a type assertion. This can be useful in some cases, but if used improperly, it can lead to runtime errors that TypeScript can't catch.
+```typescript
+let data: any = "Hello";
+let length: number = (data as string).length; // No error
+data = 10;
+length = (data as string).length; // Runtime error
+```
+To avoid this, only use type assertions when you're sure about the underlying type, or when you've just checked the type.
+**Mistaking interfaces for runtime types**: Unlike Python classes or C structures, TypeScript interfaces have no runtime equivalent. They're purely a compile-time construct. This means you can't use an interface to check the type of an object at runtime.
+
+```typescript
+interface User {
+    name: string;
+    age: number;
+}
+let user = { name: "Alice", age: 25 };
+console.log(user instanceof User); // Error: User only exists at compile time
+```
+To avoid this, remember that interfaces are a way for you to tell TypeScript how an object is shaped. If you need to check types at runtime, consider using classes or type guards.
+**Not handling promise rejections**: Both JavaScript and TypeScript use Promises for async programming. In TypeScript, unhandled Promise rejections don't crash the program like unhandled exceptions in Python or C. This can lead to silent failures that are hard to debug.
+```typescript
+async function risky() {
+    throw new Error("Oops");
+}
+risky(); // Unhandled promise rejection
+```
+To avoid this, always handle Promise rejections using `catch` or `try`/`catch` in async functions.
 
 ## TypeScript with Libraries and Frameworks
 ### Using TypeScript with React
