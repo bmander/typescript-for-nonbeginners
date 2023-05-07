@@ -1711,7 +1711,7 @@ In this example, DialogResponse can be any of the literal types `"yes"`, `"no"`,
 In general, if you need to represent a group of related numeric constants, and especially if you need reverse mapping, enums are a great choice. If you need to represent a group of related string (or boolean) constants, literal types combined with union types can be more concise and flexible.
 
 
-### Advanced Topics: Mixins, Decorators, and Metadata Reflection
+### Advanced Topics
 
 #### Mixins in TypeScript
 In object-oriented programming, a mixin is a class that contains methods for use by other classes without having to be the parent class of those other classes. In TypeScript, mixins allow us to create reusable pieces of functionality that can be added to traditional single inheritance-based classes. They provide a mechanism to share behavior across classes, without forcing us into an awkward inheritance hierarchy. This is in contrast to languages like C and Python that use multiple inheritance to share behavior across classes.
@@ -1766,7 +1766,7 @@ myBoat.getInsurance(); // We can now call this method
 ```
 
 Unlike Python's multiple inheritance, where a class can inherit from multiple classes leading to a potentially complex inheritance graph, TypeScript's mixins provide a more controlled way of sharing behavior across classes.
-#### Introduction to Decorators
+#### Decorators
 
 In TypeScript, decorators provide a way to add both annotations and a meta-programming syntax for class declarations and members. They can be used to modify, or decorate, classes, properties, methods, accessors, or parameters.
 
@@ -1811,24 +1811,60 @@ let calculator = new Calculator();
 calculator.add(2, 3); // This will now log the arguments and result
 ```
 
-#### Decorator Factories
-#### Class Decorators and Method Decorators
-#### Accessor and Property Decorators
-#### Parameter Decorators
-#### Metadata Reflection
+Decorators are an advanced, detailed, and unstable feature of TypeScript. For more information, refer to [Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html) in the TypeScript handbook.
 
+#### Type Guards and Discriminated Unions
 
-## TypeScript vs. JavaScript
-### How TypeScript Solves JavaScript's Problems
-### When to Use TypeScript over JavaScript
+A **type guard** is an expression that performs a runtime check that guarantees the type in a certain scope. You can create a type guard using a function that includes a type predicate, i.e., a boolean expression that is linked to a type via the is keyword.
 
-## TypeScript vs. Python
-### How TypeScript and Python Differ in Approach
-### When to Use TypeScript over Python
+```typescript
+function example(foo: unknown) {
+  let bar: string = foo; // Compile-time error
+  if (typeof foo === "string") {
+    let biz: string = foo; // OK
+  }
+}
+```
 
-## TypeScript vs. C
-### How TypeScript and C Differ in Approach
-### When to Use TypeScript over C
+**Discriminated unions**, on the other hand, are a method of creating a type that could be one of several defined types. What sets discriminated unions apart is that each type in the union has a common literal type property—the discriminant—that you can use to tell the types apart at runtime.
+
+```typescript
+type Shape = Square | Circle;
+
+interface Square {
+    kind: "square";
+    size: number;
+}
+
+interface Circle {
+    kind: "circle";
+    radius: number;
+}
+
+function getArea(shape: Shape) {
+    switch (shape.kind) {
+        case "square": return shape.size * shape.size;
+        case "circle": return Math.PI * shape.radius ** 2;
+    }
+}
+```
+
+Discriminated unions (also known as tagged unions or algebraic data types) are useful when you want to represent a value that could be one of several distinct types, and where each type has different properties. They make it possible to do type-safe exhaustive checks. The key feature of discriminated unions is that TypeScript can narrow down the exact type within a conditional block (like an `if` or `switch` statement). This gives you the ability to work with different shapes of data while still maintaining type safety.
+
+Example use cases include representing complex state in state machines, modeling JSON data, or any situation where a value could have multiple forms.
+
+## Language Comparison
+### TypeScript vs. JavaScript
+#### How TypeScript Solves JavaScript's Problems
+#### When to Use TypeScript over JavaScript
+
+### TypeScript vs. Python
+#### How TypeScript and Python Differ in Approach
+#### When to Use TypeScript over Python
+
+### TypeScript vs. C
+#### How TypeScript and C Differ in Approach
+#### When to Use TypeScript over C
 
 ## TypeScript Development Environment
 ### Setting Up TypeScript
@@ -1843,7 +1879,7 @@ calculator.add(2, 3); // This will now log the arguments and result
 ## Advanced TypeScript
 ### Decorators and Metadata Reflection
 ### Generic Types
-### Type Guards and Discriminated Unions
+
 
 ## TypeScript with Libraries and Frameworks
 ### Using TypeScript with React
