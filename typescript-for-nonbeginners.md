@@ -2036,6 +2036,85 @@ To avoid this, always handle Promise rejections using `catch` or `try`/`catch` i
 
 ## TypeScript with Libraries and Frameworks
 ### Using TypeScript with React
+React is a popular JavaScript library for building user interfaces, particularly single-page applications. When used with TypeScript, React can offer more robust, scalable, and maintainable code. Here's how TypeScript and React work together:
+
+**TypeScript with JSX**: React uses JSX, a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript/TypeScript. TypeScript supports JSX with the `.tsx` file extension. You'll find the type-checking benefits of TypeScript extend into your JSX.
+```tsx
+// An example of TypeScript with JSX
+type ButtonProps = {
+  text: string,
+  onClick: () => void
+}
+
+const Button = ({ text, onClick }: ButtonProps) => (
+  <button onClick={onClick}>{text}</button>
+);
+```
+
+**Component Props Typing**: In React, you often pass data to components through properties (props). With TypeScript, you can type these props for better safety and developer experience. This is analogous to function parameter typing in C and Python.
+```tsx
+type UserProps = {
+  name: string;
+  age: number;
+};
+
+// Our component expects an object with a 'name' and 'age' property.
+const User = ({ name, age }: UserProps) => (
+  <div>
+    {name}, {age}
+  </div>
+);
+```
+
+**State Typing**: If you're using the useState hook in your React components, TypeScript can help ensure that the state within your components is manipulated correctly.
+
+```tsx
+// Here, TypeScript infers the type from the initial state.
+const [count, setCount] = React.useState(0);
+
+// You can also explicitly declare the state type.
+const [state, setState] = React.useState<{ count: number }>({ count: 0 });
+```
+
+**Typing Event Handlers**: When creating event handlers in React, TypeScript can ensure that the event object you're working with is what you expect.
+
+```tsx
+const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(event.target.value);
+};
+```
+
+**Typing Context**: If you're using React's Context API, TypeScript can help type both the context value and the consuming component.
+
+```tsx
+type ThemeContextType = { theme: string; toggleTheme: () => void };
+const ThemeContext = React.createContext<ThemeContextType | undefined>(
+  undefined
+);
+
+// Later, in a component...
+const themeContext = React.useContext(ThemeContext);
+themeContext?.toggleTheme();
+```
+
+**Typing Reducers**: When using useReducer or Redux with React, TypeScript can enforce that the actions and the state adhere to a specific format.
+
+```tsx
+type State = { count: number };
+type Action = { type: 'increment' | 'decrement'; payload: number };
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + action.payload };
+    case 'decrement':
+      return { count: state.count - action.payload };
+    default:
+      throw new Error();
+  }
+}
+```
+
 ### Using TypeScript with Angular
 ### Using TypeScript with Node.js
 
