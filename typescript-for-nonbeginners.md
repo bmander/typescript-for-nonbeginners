@@ -1436,7 +1436,8 @@ Modules in TypeScript are different from namespaces (which we will discuss later
 
 In contrast to JavaScript, TypeScript also provides powerful features to work with modules, such as path mapping and wildcard module declarations, which provide flexibility for structuring larger code bases.
 
-Keep in mind that TypeScript will compile to a module system that you specify (such as CommonJS, AMD, SystemJS, or ES6 modules), and understanding the nuances of these target systems is crucial when working with modules in TypeScript. We'll delve more into exporting and importing modules, default exports, and the interplay between namespaces and modules in the following sections.
+Keep in mind that TypeScript will compile to a module system that you specify (such as CommonJS, AMD, SystemJS, or ES6 modules), and understanding the nuances of these target systems is crucial when working with modules in TypeScript.
+
 #### Exporting and Importing Modules
 In TypeScript, you can export variables, functions, classes, type aliases, interfaces, and more. To export an entity, use the `export` keyword. Here is an example of exporting a function and a variable:
 ```typescript
@@ -1674,7 +1675,7 @@ The concept of typed arrays and tuples might be familiar to C and Python develop
 
 #### Enum Type and Literal Type
 
-In TypeScript, `enum` is a feature that is not available in JavaScript. The purpose of `enum` is to provide a convenient way to name sets of numeric values. For instance, you might use `enum` to represent categories, states, or any set of values that can be described with a unique identifier.
+In TypeScript, **`enum`** is a feature that is not available in JavaScript. The purpose of `enum` is to provide a convenient way to name sets of numeric values. For instance, you might use `enum` to represent categories, states, or any set of values that can be described with a unique identifier.
 
 ```typescript
 enum Color {
@@ -1690,7 +1691,7 @@ In this example, `Color` is an `enum` that can take on the values `Color.Red`, `
 
 The use of `enum` brings two main benefits: code readability (it's easier to understand `Color.Red` than a specific numeric value), and type safety (the variable color can only hold a value from `Color`, preventing the assignment of inappropriate values).
 
-Literal types in TypeScript allow you to specify the exact value a variable or a parameter must have. A literal type is a type that represents exactly one value. For instance, the type `"hello"` only represents the single string `"hello"`.
+**Literal types** in TypeScript allow you to specify the exact value a variable or a parameter must have. A literal type is a type that represents exactly one value. For instance, the type `"hello"` only represents the single string `"hello"`.
 
 ```typescript
 let yes: "yes" = "yes";
@@ -1706,6 +1707,8 @@ response = "maybe"; // Error: Type '"maybe"' is not assignable to type 'DialogRe
 ```
 
 In this example, DialogResponse can be any of the literal types `"yes"`, `"no"`, or `"cancel"`. This provides a way to specify a limited set of strings that a variable can hold, similar to how an `enum` provides a limited set of numeric values.
+
+In general, if you need to represent a group of related numeric constants, and especially if you need reverse mapping, enums are a great choice. If you need to represent a group of related string (or boolean) constants, literal types combined with union types can be more concise and flexible.
 
 
 ### Advanced Topics: Mixins, Decorators, and Metadata Reflection
