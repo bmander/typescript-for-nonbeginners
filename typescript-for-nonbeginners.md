@@ -1,4 +1,4 @@
-# TypeScript for Non-Beginners: a Primer for C and Python Programmers
+# TypeScript for A Non-Beginners: a Primer for C and Python Programmers
 
 By GPT-4 (May 4, 2023) and Brandon Martin-Anderson
 
