@@ -87,12 +87,15 @@ For other distributions, please refer to the official Visual Studio Code documen
 Once installed, you can open VS Code by typing code in your terminal.
 #### Installing Useful Extensions for JavaScript and TypeScript Development
 VS Code has a robust marketplace for extensions, which can enhance your development experience. Here are a few extensions you might find helpful:
+
 * **ESLint**: ESLint is a static code analysis tool for identifying problematic patterns found in JavaScript code. It's a great tool to ensure your code adheres to a specific coding style.
 * **Prettier - Code formatter**: Prettier is an opinionated code formatter that integrates with VS Code. It helps to maintain a consistent code style by automatically formatting your code.
 * **Visual Studio IntelliCode**: IntelliCode provides AI-assisted code recommendations based on best practices from thousands of open source repos.
 
 To install an extension, click on the Extensions view icon on the Sidebar (or press `Ctrl+Shift+X`), then search for the extension you want and click on Install.
+
 ### Installing TypeScript
+
 #### Explanation of the TypeScript Compiler
 TypeScript is a superset of JavaScript that adds static type definitions. It provides the ability to use features from recent versions of JavaScript and some additional features that are not available in JavaScript, such as interfaces and enums.
 
@@ -113,7 +116,9 @@ tsc -v
 This command should return the installed version of TypeScript. If you see a version number, that means TypeScript is successfully installed and ready to use.
 
 Keep in mind that TypeScript also gets updated regularly, so it's a good idea to update your global TypeScript installation from time to time using the same command you used to install it.
+
 ### Verifying Your Setup
+
 #### Running a Sample JavaScript Program
 Let's start by running a simple JavaScript program to verify that Node.js is set up correctly. Create a new file named `hello.js` and add the following code:
 ```javascript
@@ -157,19 +162,24 @@ JavaScript is based on the ECMAScript standard. ECMAScript is a standard for scr
 ECMAScript is standardized by the ECMA International standards organization in the ECMA-262 specification. The standard was first published in 1997, and it has been updated with new versions on a regular basis since then.
 
 Key Versions
+
 * **ES1-ES3 (1997-1999)**: The early years of ECMAScript established foundational language features.
 * **ES5 (2009)**: This version was a significant update to the language, introducing features such as Array.prototype methods like forEach, map, filter, and reduce, JSON support, and strict mode which helps catch common coding mistakes and "unsafe" actions.
 * **ES6 / ES2015**: This version brought a massive number of updates, and is often considered a new era for JavaScript. Major features include let and const, classes, arrow functions, promises, and modules.
 * **ES7 / ES2016 - ES11 / ES2020**: The ECMA committee moved to an annual release cycle, with smaller sets of features released each year. Notable additions include async/await (ES2017), rest/spread operators (ES2018), optional chaining and nullish coalescing (ES2020).
-####
+
 Because JavaScript runs in browsers, server environments, and more, it's important to consider compatibility. Not all environments support all features of the latest ECMAScript standard. For example, Internet Explorer does not support many ES6 features. This is where transpilers like Babel come into play, converting newer JavaScript code into older syntax for compatibility.
 
 In the context of TypeScript, it is worth noting that TypeScript supports newer ECMAScript features, and can compile your TypeScript (which includes these features) into JavaScript that aligns with older ECMAScript standards for broad compatibility.
 
 For checking feature support across various JavaScript environments, resources like [caniuse.com](https://caniuse.com/) and the [ECMAScript compatibility](https://kangax.github.io/compat-table/es6/) table are invaluable.
+
 ### Basic Syntax and Concepts
+
 #### Variables and Constants
+
 ##### var, let, and const
+
 In JavaScript, you can declare variables using `var`, `let`, or `const`.
 
 ```javascript
@@ -198,6 +208,7 @@ const pi = 3.14159;
 pi = 3;  // TypeError: Assignment to constant variable.
 ```
 In comparison, Python uses `=` for variable assignment and doesn't have block scope, and it doesn't have a built-in constant type. In C, you declare variables with a type identifier like `int`, `float`, `char`, etc., and `const` is used to declare constants.
+
 ##### Scope and hoisting
 
 In JavaScript, a variable's "scope" is the context in which it's defined. JavaScript has three types of scope: global, function, and block.
@@ -214,10 +225,15 @@ var x = 5;
 ```
 
 In contrast, Python's scope is determined by the function, class, or module in which a variable is declared, and it doesn't have variable hoisting. In C, a variable's scope is determined by the block in which it's declared, and it also doesn't have variable hoisting.
+
 #### Data Types
+
 JavaScript has a dynamic and weakly typed system, which means you don't have to declare the type of a variable when you create it, and you can change a variable's type later in your code.
+
 ##### Primitive Types
+
 JavaScript has seven primitive types: `number`, `string`, `boolean`, `null`, `undefined`, `symbol`, and `bigint`
+
 * `number`: Unlike many other programming languages, JavaScript does not distinguish between integer and floating-point values. All numbers in JavaScript are represented as floating-point values. JavaScript represents numbers using the 64-bit floating-point format defined by the IEEE 754 standard.
   ```javascript
   let count = 10;         // integer
@@ -254,8 +270,11 @@ JavaScript has seven primitive types: `number`, `string`, `boolean`, `null`, `un
   const bigNumber = 1234567890123456789012345678901234567890n;
   ```
   Neither Python nor C have a direct equivalent to JavaScript's bigint built into the language. In Python, the built-in int type can handle arbitrarily large integers, but they are not the same as JavaScript's bigint because they don't require a special notation. In C, you would need to use a library to work with arbitrarily large integers.
+  
 ##### Composite Types
+
 In addition to primitive types, JavaScript has composite types: `object`, `array`, and `function`
+
 * `object`: An unordered collection of related data of varied types (properties) and functionality (methods). When a variable is assigned an object, what's actually stored in the variable is a reference to the memory location where the object is stored.
   ```javascript
   let person = {
@@ -280,9 +299,13 @@ In addition to primitive types, JavaScript has composite types: `object`, `array
   Python treats functions as first-class objects as well. In C, while you can pass function pointers around, functions are not first-class objects in the same way as in JavaScript or Python.
   
 In sum, JavaScript offers a versatile set of data types, both primitive and composite. Its dynamic nature allows for great flexibility, but can also be a source of confusion and bugs, which TypeScript helps to address.
+
 #### Control Flow
+
 ##### Conditional Statements: if, else, switch
+
 JavaScript has several constructs for conditional execution of code: `if`, `else`, and `switch`.
+
 * `if`: This is the most basic form of control flow statement. It performs a statement if a logical condition is true. If the condition is false, another statement can be executed using the `else` clause.
   ```javascript
   let count = 5;
@@ -318,9 +341,13 @@ JavaScript has several constructs for conditional execution of code: `if`, `else
           console.log('I am not a banana or an apple.');
   }
   ```
+  
 The switch statement in JavaScript is quite similar to that in C, including the use of break to prevent fallthrough. Python doesn't have a switch statement, but similar functionality can be achieved with a dictionary of functions or a series of if, elif, and else statements.
+
 ##### Loops: for, while, do...while, for...in, for...of
+
 Loops are a fundamental concept in programming, allowing for repeated execution of a block of code. JavaScript provides several looping mechanisms.
+
 * `for`: The for loop runs a block of code a specified number of times. It consists of three expressions: initialization, condition, and incrementation.
   ```javascript
   for (let i = 0; i < 5; i++) {
@@ -362,8 +389,11 @@ Loops are a fundamental concept in programming, allowing for repeated execution 
   }
   ```
   Python's `for...in` loop can behave similarly when used on iterable objects. C doesn't have an equivalent loop construct, as iteration generally involves either a traditional for loop or pointer arithmetic.
+  
 #### Functions
+
 ##### Function Declaration and Expression
+
 Functions in JavaScript are blocks of reusable code that perform a particular task. Functions can be defined (declared) using a **function declaration** or a **function expression**.
 
 * **Function Declaration**: This is the most common way to define a function in JavaScript. A function declaration starts with the function keyword, followed by the name of the function, a list of parameters in parentheses, and the function body enclosed in curly braces {}. The name is used to call the function.
@@ -384,7 +414,9 @@ Functions in JavaScript are blocks of reusable code that perform a particular ta
   greet('Bob');  // prints: Hello, Bob!
   ```
   In Python, you can assign a function to a variable, but it's not as common. In C, you can also assign functions to pointers, but the syntax is quite different and it's used in more specific contexts, such as for function callbacks or creating function tables.
+  
 ##### Arrow Functions
+
 Arrow functions provide a more concise syntax for defining functions in JavaScript. Introduced in ES6, arrow functions are particularly handy for short, single-line functions and for functions used as callbacks or passed as arguments to higher-order functions.
 The syntax for an arrow function looks like this:
 ```javascript
@@ -443,7 +475,9 @@ In JavaScript, functions can take parameters. Parameters are values that the fun
   console.log(add(1, 2, 3, 4));  // prints: 10
   ```
   Rest parameters were also introduced in ES6. Python has a similar feature with its `\*args` syntax. In C, functions must declare a fixed number of parameters, but you can achieve similar functionality with variadic functions and the `va_list` type, which is more complex and less flexible than JavaScript's rest parameters.
+  
 ##### Closures
+
 In JavaScript, a closure is a function that has access to its own scope, the outer function's scope, and the global scope. This means that a function defined inside another function can access variables defined in its parent function even after the parent function has finished executing.
 
 Here's an example:
@@ -464,8 +498,11 @@ Closures are a powerful feature of JavaScript (and other languages that support 
 Python also supports closures with similar semantics to JavaScript. In C, you can achieve similar functionality with function pointers and structures, but the syntax is less straightforward and closures are not as commonly used as they are in JavaScript and Python.
 
 #### Object-Oriented Programming in JavaScript
+
 JavaScript is a multi-paradigm language that supports procedural, functional, and object-oriented programming styles. One of the unique aspects of JavaScript's object-oriented programming (OOP) model is its use of prototypes and prototypal inheritance, as opposed to the classical inheritance found in languages like Python and C++.
+
 ##### Objects and Prototypes
+
 In JavaScript, an object is a collection of properties, and a property is an association between a key (or name) and a value. A property's value can be a function, in which case the property is known as a method. Objects in JavaScript are dynamic; properties can be added, modified, and deleted after the object is created.
 ```javascript
 let dog = {
@@ -491,6 +528,7 @@ console.log(dog.makesSound);  // prints: true
 In this example, the dog object doesn't have a makesSound property of its own, but it inherits it from its prototype, the animal object. This is an example of prototypal inheritance.
 
 ##### Classes (ES6+)
+
 Despite its prototypal nature, JavaScript introduced a `class` keyword in ES6 to facilitate a more classical OOP syntax. JavaScript's classes are a syntactic sugar over its existing prototype-based inheritance.
 ```javascript
 class Dog {
@@ -509,8 +547,11 @@ fido.bark();  // prints: Woof!
 In this example, `Dog` is a class with a constructor and a method. The `class` syntax in JavaScript is similar to classes in Python and other OOP languages, but under the hood, it's still using JavaScript's prototype-based model.
 
 It's important to note that `this` in JavaScript behaves differently than in Python and C++. In JavaScript, the value of this is determined by how a function is called, and it can be different each time the function is called. In contrast, in Python and C++, `this` (or `self` in Python) always refers to the instance on which the method was called.
+
 ### Unique Features and Idiosyncrasies
+
 #### Dynamic Typing and Type Coercion
+
 JavaScript is a dynamically typed language, meaning that variables can hold values of any type without any type annotation or declaration. This is in contrast to statically typed languages like C, where the type of each variable must be declared at the time of its creation.
 
 ```javascript
@@ -535,7 +576,9 @@ It's also possible to perform explicit type conversion (type casting), which is 
 let result = Number('3') + 2;  // 5
 ```
 In this case, the string `'3'` is explicitly converted to a number before addition. This results in the numeric value `5`, not the string `'32'`. Understanding the rules of type coercion can help prevent unexpected results in JavaScript code.
+
 #### Truthy and Falsy Values
+
 In JavaScript, values are not just considered as `true` or `false` in a boolean context, but also as `truthy` and `falsy`. This is another unique feature of JavaScript, as opposed to Python and C, where values are typically evaluated in a more straightforward boolean context.
 
 A value is considered `falsy` if it's evaluated as `false` in a boolean context. The following values are always `falsy`:
@@ -565,7 +608,9 @@ This behavior can lead to some confusing scenarios if you're not aware of it. Fo
 In Python, similar rules exist, but they're not identical. For example, empty sequences and collections (like `[]`, `()`, and `{}`) are considered `False`, unlike in JavaScript. In C, the rules are more strict: `0` and null pointers are `false`, and all other values are `true`.
 
 Understanding the rules of truthy and falsy can help you write more concise and idiomatic JavaScript code, but it can also be a source of bugs if not handled carefully.
+
 #### The `this` Keyword
+
 The `this` keyword in JavaScript behaves differently than most other programming languages. It's a special identifier keyword that's automatically defined in the scope of every function, and it typically refers to something called the "context" or the "calling object" of the function.
 
 However, what `this` actually references depends on how the function is called, not how or where it's defined. This is a key difference from languages like Python and C, where the behavior of `this` (or its equivalent) is more predictable and less dependent on the function call.
@@ -596,10 +641,13 @@ This dynamic behavior of `this` is one of the features that make JavaScript both
 In contrast, Python's equivalent of `this`, which is `self`, behaves quite differently. It's explicitly passed to instance methods and it always refers to the instance on which the method was called. Similarly in C++, `this` always points to the object for which the method was called, making its behavior more predictable than JavaScript's `this`.
 
 Understanding how `this` works in JavaScript is crucial, especially when dealing with object-oriented programming, event handlers, and certain design patterns. It's also a key concept to grasp before diving into TypeScript, where `this` behaves in a similar manner, but with some additional rules due to TypeScript's static typing.
+
 #### Asynchronous JavaScript: Callbacks, Promises, Async/Await
+
 JavaScript is designed to be non-blocking, which means that it doesn't stop execution to wait for operations such as network requests or file I/O to complete. Instead, it uses a model of concurrency known as the Event Loop, which allows it to run tasks in the background and continue executing other code.
 
 This asynchronous behavior is one of JavaScript's defining features, and it's handled through several constructs: callbacks, Promises, and async/await.
+
 * **Callbacks**: A callback is a function that's passed as an argument to another function and is invoked when a particular task has completed. Callbacks are the most basic method of handling asynchronicity in JavaScript. Here's a simple example:
   ```javascript
   function downloadImage(url, callback) {
@@ -650,7 +698,9 @@ This asynchronous behavior is one of JavaScript's defining features, and it's ha
   ```
   
   Here, `downloadAndLogImage` is an async function, which means it automatically returns a Promise. Inside the function, the `await` keyword is used to pause execution of the function until the Promise from `downloadImage` is settled. If the Promise is fulfilled, `await` returns the fulfilled value. If the Promise is rejected, `await` throws the rejection value.
+  
 #### Event Loop and Non-blocking I/O
+
 In JavaScript, the event loop and non-blocking I/O are fundamental aspects of its runtime environment, and understanding these concepts is key to understanding how JavaScript handles asynchronicity and concurrency.
 
 The **event loop** is the mechanism that allows JavaScript to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded. This is done by offloading operations to the system kernel whenever possible. When the kernel finishes those operations, it sends a message back to the JavaScript runtime, which gets pushed onto the event loop to be eventually executed.
@@ -667,7 +717,9 @@ This is a fundamental part of JavaScript and is not optional or configurable, un
 Non-blocking I/O in JavaScript allows the execution of other code while waiting for activities like network requests, file system reads, etc. This is a key feature that enables JavaScript to handle high throughput despite being single-threaded.
 
 In contrast, languages like C and Python have a more traditional blocking I/O model by default, where execution stops until the I/O operation is completed. For non-blocking I/O, C developers can use system level calls and libraries like `libuv` (which is also used by Node.js), while Python developers can use the `asyncio` library, but these require more explicit handling compared to JavaScript.
+
 #### Prototypal Inheritance vs. Classical Inheritance
+
 JavaScript is unique among many programming languages because it uses prototypal inheritance rather than classical inheritance. This distinction fundamentally changes how objects and classes interact.
 
 In **classical inheritance**, such as in Python or C++, classes are blueprints that define properties and methods. You create instances of a class, and these instances inherit all the properties and methods of the class. Inheritance in this case is a "is-a" relationship, and you can create class hierarchies with the use of the extends keyword (in Python, it's the class definition in the parentheses).
@@ -718,6 +770,7 @@ console.log(dog.speak());  // Outputs: Woof!
 In this example, `dog` is an object that prototypes from the `animal` object, and it overrides the `speak` method. When `dog.speak()` is called, JavaScript looks for the `speak` method on the `dog` object first before looking up the prototype chain.
 
 With the introduction of ES6, JavaScript introduced the `class` syntax which makes it look like it's using classical inheritance, but under the hood, it's still prototypal inheritance. The `class` syntax in JavaScript is just syntactic sugar over prototypal inheritance.
+
 ```javascript
 class Animal {
     constructor(name) {
@@ -742,7 +795,9 @@ console.log(dog.speak());  // Outputs: Rover says: woof!
 In this example, even though we're using `class` and `extends`, JavaScript is still using prototypal inheritance behind the scenes. It's just that the syntax makes it easier for developers coming from a class-based language to understand and use.
 
 Understanding the prototypal nature of JavaScript is crucial for understanding how objects, methods, and inheritance work in JavaScript. It's one of the key differences between JavaScript and classically-inherited languages like Python and C++.
+
 #### JavaScript Module System: CommonJS, AMD, ES6 Modules
+
 JavaScript has evolved significantly over the years, particularly in how it handles modules. A module is a piece of code that is encapsulated and can be imported and used in other parts of an application. The module system in JavaScript has gone through several iterations, including CommonJS, AMD, and ES6 Modules.
 
 * **CommonJS**: CommonJS is a module format that gained popularity through Node.js. It uses the `require` function to import modules and `module.exports` to export them.
@@ -826,7 +881,9 @@ C, being a statically-typed compiled language, has a different workflow. C sourc
 The rise of Babel in the JavaScript ecosystem reflects the unique challenges of JavaScript as a language that's widely used both on the server and in a vast array of browsers, each with their own JavaScript engine and level of ES6+ feature support. It's a testament to the flexibility of JavaScript, but also to the complexity that can come with ensuring JavaScript code runs correctly in every possible environment.
 
 ## TypeScript Basics
+
 ### The Purpose of TypeScript
+
 TypeScript, developed by Microsoft, is a statically typed superset of JavaScript that adds optional types to the language. It was designed to make the development of large-scale applications more manageable and efficient, addressing some of the difficulties and structural limitations inherent in JavaScript, particularly as the complexity of the codebase grows.
 
 The primary purpose of TypeScript is to provide type safety to JavaScript. In JavaScript, a dynamically typed language, variables can hold values of any type, and the type can be changed throughout the lifetime of the variable. This flexibility, while beneficial in some scenarios, can also lead to errors that are hard to detect and debug, especially in large and complex codebases.
@@ -857,8 +914,11 @@ TypeScript also introduces features like interfaces, enums, tuples, generics, an
 Moreover, TypeScript includes support for modern JavaScript features, such as classes, modules, and arrow functions, and it transpiles to older versions of JavaScript for compatibility with older browsers. This feature ensures that developers can use the latest JavaScript features while maintaining backward compatibility.
 
 In summary, the purpose of TypeScript is to enhance JavaScript by providing static typing and advanced features, making it a more robust, manageable, and productive environment for developing complex applications. It brings the safety and robustness of static typing and other productivity features, and bridges the gap between JavaScript and more structured languages like C and Python.
+
 ### Basic Syntax
+
 TypeScript is a superset of JavaScript, so any valid JavaScript code is also valid TypeScript code. However, TypeScript introduces new syntax for type annotations and several other features.
+
 * **Variable Declaration**: Like JavaScript, TypeScript uses `var`, `let`, and `const` for variable declaration. However, in TypeScript, you can also specify the type of the variable:
   ```typescript
   let isDone: boolean = false;
@@ -930,8 +990,11 @@ TypeScript is a superset of JavaScript, so any valid JavaScript code is also val
 In summary, TypeScript's syntax is a superset of JavaScript's, with additional features to support static typing, interfaces, and other constructs that are more common in statically typed languages like C. This creates a bridge between the dynamic JavaScript world and the more static world of languages like C and Python, allowing developers to choose the level of type safety and abstraction that's appropriate for their specific project.
   
 ### TypeScript Types
+
 TypeScript enhances the dynamic typing of JavaScript with a robust system of static types, allowing for safer and more predictable code. In this section, we'll explore TypeScript's basic types, their similarities and differences with JavaScript's types, and the unique types that TypeScript introduces.
+
 #### Basic Types
+
 Just like in JavaScript, TypeScript includes the `boolean`, `number`, `string`, and `array` types. Their usage is straightforward and similar to other languages like Python and C.
 ```typescript
 let isDone: boolean = false;
@@ -1010,8 +1073,11 @@ TypeScript introduces a few new types not present in JavaScript to help you writ
       }
   }
   ```
+  
 #### Advanced Types
+
 TypeScript introduces several advanced types and type behaviors that are not present in JavaScript. These types provide powerful tools for creating more expressive type annotations and handling complex typing situations.
+
 * **Intersection Types**: Intersection types allow you to combine multiple types into one. This feature allows you to add together existing types to get a single type that has all the features you need.
   ```typescript
   interface Part1 { a: number; }
@@ -1060,9 +1126,13 @@ TypeScript introduces several advanced types and type behaviors that are not pre
       T extends undefined ? "undefined" :
       "object";
   ```
+  
 ### Variables, Constants, and Scope
+
 The rules and conventions for variables, constants, and scope in TypeScript largely follow those of JavaScript, with some added layers of safety from the typing system. In this section, we'll focus on key differences and salient features as they relate to TypeScript.
+
 #### Var, Let, and Const
+
 In TypeScript, you can declare variables with `var`, `let`, or `const`, similar to JavaScript. The difference between these lies in scoping rules, reassignments, and hoisting behavior.
 ```typescript
 var varVariable = "var"; // Function or globally scoped, can be reassigned, hoisted
@@ -1070,12 +1140,16 @@ let letVariable = "let"; // Block scoped, can be reassigned, not hoisted
 const constVariable = "const"; // Block scoped, can't be reassigned, not hoisted
 ```
 While `var` is function-scoped and can be reassigned, it is generally recommended to use `let` and `const` which are block-scoped, similar to variables in Python and C, and can prevent many common JavaScript errors.
+
 #### Type Annotations
+
 TypeScript introduces type annotations, allowing you to explicitly specify the type of a variable at the time of declaration, enhancing type safety.
 ```typescript
 let isDone: boolean = false; // Here, `isDone` is declared as a boolean
 ```
+
 #### Scope
+
 Variable scope in TypeScript follows the same rules as in JavaScript. There are two types of scope: global scope and local scope. Any variable declared outside of a function belongs to the global scope, and it can be accessed from any part of the code. A variable declared inside a function is known as a local variable, and it is only accessible within that function.
 ```typescript
 let globalVar = "I am global!"; // This is a global variable
@@ -1092,6 +1166,7 @@ console.log(localVar); // Error: localVar is not defined
 Like C, TypeScript also has block scope. However, unlike C and more like Python, variables in TypeScript (and JavaScript) are not block scoped when declared with `var` but are block scoped when declared with `let` or `const`.
 
 #### Variable Hoisting
+
 Hoisting is a JavaScript concept where variable and function declarations are moved to the top of their containing scope during the compile phase, which is also applicable to TypeScript. However, only declarations are hoisted, not initializations.
 ```typescript
 console.log(hoistedVar); // undefined, but no error because hoistedVar is hoisted
@@ -1099,15 +1174,20 @@ var hoistedVar = "I am hoisted!";
 ```
 
 In TypeScript, it's important to note that `let` and `const` are also hoisted, but they are not initialized to undefined like `var`. Accessing a `let` or `const` variable before its declaration will result in a `ReferenceError`.
+
 ### Functions
+
 #### Function Types
+
 In TypeScript, you can define the input types and the return type of a function, providing better type safety. This is similar to specifying types in C and Python (3.5 onwards) function definitions.
 ```typescript
 function add(x: number, y: number): number {
     return x + y;
 }
 ```
+
 #### Optional and Default Parameters
+
 TypeScript supports optional parameters, declared with a ? after the parameter name. This is not available in JavaScript or C, but is similar to Python's default arguments.
 ```typescript
 function greet(name?: string) {
@@ -1120,21 +1200,27 @@ function greet(name = "Guest") {
     return `Hello, ${name}`;
 }
 ```
+
 #### Rest Parameters
+
 TypeScript, like JavaScript, supports rest parameters, allowing functions to accept any number of arguments of a specified type. This is similar to Python's `\*args` but not available in C.
 ```typescript
 function buildName(firstName: string, ...restOfName: string[]) {
     return firstName + " " + restOfName.join(" ");
 }
 ```
+
 #### Callback Functions
+
 Callback functions in TypeScript work like in JavaScript. However, TypeScript allows you to type the callback function, enhancing safety and clarity.
 ```typescript
 function processArray(arr: number[], callback: (a: number) => void) {
     arr.forEach(callback);
 }
 ```
+
 #### Overloads
+
 TypeScript supports function overloading, a feature not available in JavaScript or Python but common in C. Overloading allows multiple function types for the same function, a powerful tool for function design.
 ```typescript
 function padLeft(value: string, padding: string | number) {
@@ -1146,8 +1232,11 @@ let indentedString = padLeft("Hello world", true); // errors at compile time
 In the example above, padLeft can take a `string` or `number` as the second argument. If any other type is provided, TypeScript will throw an error at compile time.
 
 In addition to these features, TypeScript also supports arrow functions, similar to JavaScript (ES6) and Python's lambda functions, and function type interfaces, providing even more control over function types.
+
 ### Interfaces
+
 Interfaces in TypeScript allow you to describe the shape and capabilities of an object, similar to defining a contract for a class. They are not present in JavaScript, Python, or C, making them a unique feature of TypeScript that enhances code clarity and robustness.
+
 #### Defining an Interface
 An interface is defined using the `interface` keyword, followed by the interface name and a set of curly brackets. Within the brackets, you define properties and their types.
 ```typescript
@@ -1162,7 +1251,9 @@ let johnDoe: Person = {
     lastName: "Doe"
 };
 ```
+
 #### Optional Properties
+
 Optional properties are denoted by a `?` following the property name.
 
 ```typescript
@@ -1195,6 +1286,7 @@ let point: Point = { x: 10, y: 20 };
 ```
 
 #### Function Types in Interfaces
+
 Interfaces can also define function types. This allows you to specify the function signature that an object is expected to have.
 ```typescript
 interface MathFunc {
@@ -1204,7 +1296,9 @@ interface MathFunc {
 // Usage:
 let add: MathFunc = function(x: number, y: number) { return x + y; };
 ```
+
 #### Indexable Types in Interfaces
+
 Indexable types allow you to index any object using a specified type. This is similar to Python's sequence types but isn't available in JavaScript or C.
 ```typescript
 interface StringArray {
@@ -1216,7 +1310,9 @@ let myArray: StringArray;
 myArray = ["Bob", "Fred"];
 let myStr: string = myArray[0];
 ```
+
 #### Class Types in Interfaces
+
 Interfaces can describe classes, emphasizing the instance side of classes.
 ```typescript
 interface ClockInterface {
@@ -1232,7 +1328,9 @@ class Clock implements ClockInterface {
     }
 }
 ```
+
 #### Extending Interfaces
+
 Interfaces can extend other interfaces, allowing you to reuse components of one interface in another.
 
 ```typescript
@@ -1247,7 +1345,9 @@ interface Square extends Shape {
 // Usage:
 let square: Square = { color: "blue", sideLength: 10 };
 ```
+
 #### Hybrid Types
+
 Interfaces can also represent hybrid types, which are objects that act as a combination of some of the types.
 ```typescript
 interface Counter {
@@ -1266,9 +1366,13 @@ c.reset = function () {
     // implementation...
 }
 ```
+
 ### Classes
+
 Classes are a fundamental part of TypeScript. They are not native to JavaScript, although ECMAScript 2015 introduced a similar construct. Neither Python nor C have an equivalent to TypeScript classes, making this a unique topic to cover.
+
 #### Prototype-Based Class System
+
 Classes in TypeScript are blueprints for creating objects. They encapsulate data and the functions that manipulate that data. However, it's important to understand that despite the introduction of the `class` syntax, TypeScript remains fundamentally prototype-based at its heart, much like JavaScript.
 
 TypeScript introduces a class syntax, but this is essentially syntactic sugar over JavaScript's existing prototype-based system. When TypeScript is transpiled to JavaScript, class definitions are converted to a function (for the constructor) and a series of assignments to the constructor's prototype for methods.
@@ -1313,7 +1417,9 @@ console.log(greeter.greet()); // "Hello, world"
 ```
 
 In this transpiled code, you can see JavaScript's prototype-based nature. The `greet` method is added to the prototype of the constructor function, not to instances of the object. This is the same mechanism that TypeScript's classes use under the hood. So, while TypeScript introduces a more familiar class-based syntax for programmers coming from languages like C or Python, it remains true to JavaScript's prototype-based roots.
+
 #### Inheritance and Extending Classes
+
 TypeScript supports inheritance, allowing classes to extend others and reuse common logic.
 ```typescript
 class Animal {
@@ -1333,7 +1439,9 @@ let dog = new Dog();
 dog.bark(); // "Woof! Woof!"
 dog.move(10); // "Animal moved 10m."
 ```
+
 #### `public`, `private`, and `protected` modifiers
+
 TypeScript introduces `public`, `private`, and `protected` modifiers to control access to class members, which JavaScript lacks.
 ```typescript
 class Animal {
@@ -1348,7 +1456,9 @@ class Animal {
     }
 }
 ```
+
 #### `readonly` modifier
+
 The readonly keyword marks a class member as unmodifiable after assignment, similar to the const keyword in C.
 ```typescript
 class Octopus {
@@ -1363,7 +1473,9 @@ class Octopus {
 let octopus = new Octopus("Inky");
 // octopus.name = "Blinky"; // Error, name is readonly
 ```
+
 #### Static Properties
+
 TypeScript supports static properties in classes, which are shared among all instances of a class.
 ```typescript
 class Grid {
@@ -1376,7 +1488,9 @@ class Grid {
     }
 }
 ```
+
 #### Abstract Classes
+
 Abstract classes provide a base class from which other classes can be derived. They may not be instantiated directly.
 ```typescript
 abstract class Animal {
@@ -1387,9 +1501,13 @@ abstract class Animal {
     }
 }
 ```
+
 ### Generics
+
 Generics are one of the advanced features in TypeScript that allow developers to create reusable and flexible components. They are a powerful way to ensure type safety while maintaining versatility. While JavaScript doesn't have a native concept of generics, they might be familiar to those coming from a C++ or Java background.
+
 #### Introduction to Generics
+
 Generics, in the context of TypeScript, are a way to provide type variables to parts of TypeScript code, making them reusable. This allows you to create generic functions, classes, and interfaces that work with a variety of types while still benefiting from TypeScript's strong typing. Here's a simple example:
 ```typescript
 function identity<T>(arg: T): T {
@@ -1399,7 +1517,9 @@ function identity<T>(arg: T): T {
 let output = identity<string>("myString");  // type of output will be 'string'
 ```
 In this example, T is a type variable—a stand-in for any type. The identity function takes an argument arg of any type T and returns the same type T. This way, you can use the identity function with any type.
+
 #### Generic Constraints
+
 Sometimes, you'll want to restrict the types that can be used with your generics. This is where generic constraints come in. For example, suppose we want to create a function that logs the length of the input. We can use a generic constraint to ensure that the input has a `.length` property:
 ```typescript
 interface HasLength {
@@ -1412,7 +1532,9 @@ function logLength<T extends HasLength>(arg: T): T {
 }
 ```
 In this example, `T extends HasLength` ensures that the type `T` has a `length` property.
+
 #### Using Type Parameters in Generic Constraints
+
 We can also use the type parameter itself in a generic constraint. For example, let's create a function that copies the properties of one object to another object.
 ```typescript
 interface StringIndexable {
@@ -1430,7 +1552,9 @@ function copyProperties<T extends StringIndexable, U extends T>(
 }
 ```
 Here, the type parameter `U` is constrained to types that are assignable to `T`. This implies that `U` cannot have more properties than `T`.
+
 #### Generic Classes
+
 Just as we can create generic functions, we can also create generic classes. A generic class has a similar shape to a generic interface. Here's a basic example:
 ```typescript
 class GenericNumber<T> {
@@ -1438,7 +1562,9 @@ class GenericNumber<T> {
     add: (x: T, y: T) => T;
 }
 ```
+
 #### Generic Interfaces
+
 Similarly, we can use generics to define reusable interfaces:
 ```typescript
 interface GenericIdentityFn<T> {
@@ -1454,8 +1580,11 @@ let myIdentity: GenericIdentityFn<number> = identity;
 console.log(myIdentity(100));
 ```
 In this example, the `GenericIdentityFn` interface works with any type `T`. We instantiate it with `number` when we declare `myIdentity`.
+
 ### Modules and Namespaces
+
 #### Introduction to Modules
+
 In TypeScript, a module is a piece of code that is encapsulated in its own scope and can expose certain parts of its code to other modules using export and import statements. This is similar to modules in Python, where files can be imported using import statements to use the functions, classes, or variables defined in them.
 
 In JavaScript, modules were introduced later in its evolution, with the introduction of ES6, and are similar to how TypeScript handles modules. However, prior to ES6, JavaScript did not have a built-in module system, and developers used patterns or libraries to implement module-like behavior.
@@ -1477,6 +1606,7 @@ In contrast to JavaScript, TypeScript also provides powerful features to work wi
 Keep in mind that TypeScript will compile to a module system that you specify (such as CommonJS, AMD, SystemJS, or ES6 modules), and understanding the nuances of these target systems is crucial when working with modules in TypeScript.
 
 #### Exporting and Importing Modules
+
 In TypeScript, you can export variables, functions, classes, type aliases, interfaces, and more. To export an entity, use the `export` keyword. Here is an example of exporting a function and a variable:
 ```typescript
 // math.ts
@@ -1500,7 +1630,9 @@ This process of exporting and importing is akin to how Python uses import to gai
 The type information of the exported entities is carried along with the imports, enhancing the type safety of your TypeScript code. This contrasts with JavaScript, where the imported entities are dynamically typed.
 
 One thing to note is that TypeScript, unlike JavaScript, has different module resolution strategies: classic and node. The node strategy is the most common and works like Node.js module resolution, whereas classic is TypeScript's original resolution strategy.
+
 #### Default Exports
+
 Default exports are a feature that TypeScript shares with JavaScript ES6. They allow a module to designate one of its members as the default export, simplifying import syntax for consumers of the module. A module can only have one default export.
 
 To create a default export, use the `export default` statement. This can be applied to functions, classes, or any other valid TypeScript entity. Here's an example of a default export for a function:
@@ -1553,7 +1685,9 @@ TypeScript, like JavaScript, doesn't require a name for a default export at the 
 In comparison, Python doesn't have a direct equivalent to default exports. In Python, everything defined in a file is accessible when the file is imported, and there is no specific entity identified as the 'default'.
 
 Remember, while default exports can make your code more readable when a module has a clear primary function, they can be less explicit than named exports. It's essential to have a clear understanding of what a module exports, especially when using TypeScript's type system. 
+
 #### Introduction to Namespaces
+
 In TypeScript, a namespace is a way to logically group related code. This construct is not present in JavaScript, and it provides a way to prevent naming collisions and to organize related code in a way that's easy to understand and navigate.
 
 You can define a namespace using the `namespace` keyword followed by the name of the namespace and a block of code surrounded by curly braces `{}`. Here's a simple example:
@@ -1573,7 +1707,9 @@ To use the class or function defined in the namespace, you would use the namespa
 ```typescript
 Notice the use of the `export` keyword. This is necessary to make the class and function available outside the namespace.
 ```
+
 #### Merging Namespaces and Modules
+
 TypeScript allows merging between namespaces and modules. This means you can define a module and a namespace with the same name, and TypeScript will treat them as if they were all defined in one place. 
 
 Merging a module and a namespace can be appropriate when you want to augment the functionality of a module without modifying its original source code. This is often seen in scenarios where the module is an external library that you don't control, but you want to add some application-specific logic or helpers to it. Here's an example:
@@ -1597,6 +1733,7 @@ In the above example, both MyClass and aNewFunction can be imported from MyModul
 It's important to note that you should be cautious when augmenting modules in this way. It can lead to confusion if the original module later adds a feature with the same name as one of your augmentations, and the behavior could vary depending on import order and other factors. It's generally best to use this feature sparingly and to clearly document any module augmentations to avoid potential confusion.
 
 #### Using Modules vs. Namespaces
+
 While both modules and namespaces can be used to organize your code, there are key differences that make each suitable for different scenarios.
 
 Modules are more versatile and align more closely with the ES6 module standard. Each module has its own scope and doesn't pollute the global scope. They also have dependency resolution built in, meaning they can import other modules using the `import` keyword. This makes them suitable for large codebases where you want to explicitly control the dependencies between different parts of your application.
@@ -1604,11 +1741,15 @@ Modules are more versatile and align more closely with the ES6 module standard. 
 Namespaces, on the other hand, are suitable for smaller codebases or for situations where you want to group related code together without creating separate modules. They can be split across multiple files and can be concatenated using TypeScript's `--outFile` compiler option. However, they don't have built-in dependency resolution, and all dependencies must be manually ordered and included in your HTML.
 
 In general, modules are preferred for most applications due to their flexibility and alignment with modern JavaScript practices. However, namespaces can still be useful in certain scenarios.
+
 ### Using Types and Interfaces to Describe Data Shape
+
 In TypeScript, one of the key features that sets it apart from JavaScript is the ability to describe the shape of your data using types and interfaces. These capabilities allow you to define clear contracts for your code, provide enhanced tooling, and catch potential bugs at compile-time rather than run-time.
 
 This section delves into the concepts of type inference, type assertion, object shape and interface, array and tuple types, and enum type and literal type. By the end of this section, you should be able to understand and apply these concepts in your TypeScript development to produce safer, more predictable, and better-documented code.
+
 #### Understanding Type Inference
+
 In TypeScript, just like in C, you have the option to explicitly declare the type of a variable when you define it. However, TypeScript also offers a powerful feature known as type inference that JavaScript lacks. If you do not provide a type annotation, TypeScript will automatically infer the type based on the initial value. This is a feature shared with Python, where types are dynamically inferred at runtime.
 
 Consider the following example:
@@ -1624,7 +1765,9 @@ let animal = { name: "fido", friends: ["rover", "spot"], age: 5 }; // type is in
 
 animal.age = "15" // Error: Type 'string' is not assignable to type 'number'.
 ```
+
 #### Type Assertion
+
 TypeScript provides a feature known as type assertion that allows you to tell the compiler "trust me, I know what I'm doing." Type assertion is a way for you to explicitly tell the TypeScript compiler the specific type of a variable, bypassing the compiler's type inference. This is not a feature present in JavaScript, Python, or C, making it a uniquely TypeScript concept.
 
 It's important to note that type assertion is not the same as type conversion or type casting, common in languages like C. In TypeScript, no special checking or data restructuring happens behind the scenes when a type assertion is made – it's purely a way to provide information to the TypeScript compiler.
@@ -1649,7 +1792,9 @@ let strLength: number = (<string>someValue).length;
 This is equivalent to the previous example, but uses a different syntax. Note that while both forms are equivalent, the `as` syntax is generally more common in the TypeScript community, and is the only syntax that can be used in a TypeScript file with the `.tsx` extension (used for React components) to avoid confusion with JSX syntax.
 
 Type assertions should be used sparingly, and only when you, as the developer, have more information about the type than TypeScript's type inference can determine. Overuse of type assertions can lead to code that's less safe, as you're essentially instructing the compiler to ignore its type safety checks. Consider them as a last resort, when you're certain about the type and the compiler isn't.
+
 #### Object Shape and Interface
+
 TypeScript's ability to define the shape of an object using interfaces is one of its most compelling features. While the dynamic nature of objects in JavaScript offers flexibility, it can also lead to tricky bugs due to the lack of compile-time checking. TypeScript addresses this issue by introducing interfaces for strict type checking on objects, enhancing predictability and code quality.
 
 In TypeScript, an interface is a contract that outlines the properties and methods an object should have. Interfaces can also define optional properties, denoted by a `?`: For example:
@@ -1684,7 +1829,9 @@ function greet(person: { name: string; age: number }) {
 ```
 
 Interfaces are not transpiled to JavaScript; they exist only for static type checking. This means they have zero runtime overhead, making them a powerful tool for building safer JavaScript applications with no performance cost.
+
 #### Array and Tuple Types
+
 Arrays in TypeScript are similar to those in JavaScript, with the addition of type annotations to ensure that all elements in the array are of a specific type. For example:
 
 ```typescript
@@ -1804,6 +1951,7 @@ myBoat.getInsurance(); // We can now call this method
 ```
 
 Unlike Python's multiple inheritance, where a class can inherit from multiple classes leading to a potentially complex inheritance graph, TypeScript's mixins provide a more controlled way of sharing behavior across classes.
+
 #### Decorators
 
 In TypeScript, decorators provide a way to add both annotations and a meta-programming syntax for class declarations and members. They can be used to modify, or decorate, classes, properties, methods, accessors, or parameters.
@@ -1892,15 +2040,20 @@ Discriminated unions (also known as tagged unions or algebraic data types) are u
 Example use cases include representing complex state in state machines, modeling JSON data, or any situation where a value could have multiple forms.
 
 ## Language Comparison
+
 ### TypeScript vs. JavaScript
+
 #### How TypeScript Solves JavaScript's Problems
+
 While JavaScript's flexibility and ubiquity have made it one of the most popular programming languages, it has its share of pitfalls that can lead to confusion and bugs. TypeScript, a statically typed superset of JavaScript, was created to address some of these issues.
 
 1. **Static Typing**: JavaScript is dynamically typed, meaning you don't need to declare the type of a variable when you create it, and you can even change the type later. This can lead to runtime bugs that are hard to track down. TypeScript introduces static typing, which means types are checked at compile time. This catches many common mistakes before the code is even run.
 1. **Improved Tooling**: The static types also allow for better autocompletion, refactoring tools, and more, which can greatly improve the developer experience and productivity.
 1. **Interfaces and Type Aliases**: TypeScript allows for better structuring of your code using interfaces and type aliases, which can be used to describe the shape of an object. This is useful when working with complex data structures, particularly when dealing with large codebases or APIs.
 1. **Class Features**: TypeScript supports features from ES6 and beyond, like classes, and enhances them with additional features such as access modifiers (public, private, and protected) and abstract classes.
+
 #### When to Use TypeScript over JavaScript
+
 Choosing TypeScript over JavaScript generally comes down to the needs of your specific project and team. Here are some scenarios where TypeScript might be a better choice:
 1. **Large Codebases**: As projects grow, managing them becomes more challenging with JavaScript. TypeScript's static typing and interfaces make it easier to manage large codebases by catching errors early and providing clear contracts of what data looks like across your codebase.
 1. **Teams**: If you're working in a team, especially a large one, TypeScript can make collaboration easier. The type annotations serve as a form of documentation, making it easier for other developers to understand what each piece of code is supposed to do.
@@ -1908,6 +2061,7 @@ Choosing TypeScript over JavaScript generally comes down to the needs of your sp
 1. **If You're Using a Framework that Benefits from TypeScript**: Some JavaScript frameworks, like Angular, were built with TypeScript in mind, and using TypeScript with these frameworks can lead to a more seamless development experience.
 
 ### TypeScript vs. Python
+
 #### How TypeScript and Python Differ in Approach
 TypeScript and Python, while both high-level languages with broad utility, approach problem-solving in notably different ways.
 
@@ -1916,6 +2070,7 @@ TypeScript and Python, while both high-level languages with broad utility, appro
 **Object-Oriented Programming**: Both TypeScript and Python support object-oriented programming. However, TypeScript, with its static typing, offers features such as interfaces and explicit access modifiers (like private and public). Python, while it does support classes and inheritance, does not have an equivalent feature to TypeScript's interfaces and does not enforce access modifiers as strictly.
 
 **Concurrency Model**: Python and TypeScript/JavaScript follow different models for concurrency. Python uses a multi-threaded model, with the Global Interpreter Lock (GIL) ensuring only one thread executes Python bytecode at a time. Conversely, TypeScript (like JavaScript) uses an event-driven, non-blocking I/O model. Asynchronous operations in TypeScript are handled using Promises and the async/await syntax, which can lead to a different programming approach compared to Python's threading and multiprocessing
+
 #### When to Use TypeScript over Python
 While the choice between TypeScript and Python depends on specific project requirements and the team's expertise, there are certain scenarios where TypeScript might be a more appropriate choice:
 
@@ -1926,8 +2081,11 @@ While the choice between TypeScript and Python depends on specific project requi
 **Projects Requiring High Concurrency**: For applications that require handling many concurrent connections with asynchronous I/O, such as a chat server, TypeScript (with Node.js) might be a better choice due to its non-blocking, event-driven nature.
 
 **Interoperability with JavaScript**: If you're working in a JavaScript-heavy environment or need to interoperate closely with JavaScript code or libraries, TypeScript would be a natural choice due to its seamless integration with the JavaScript ecosystem.
+
 ### TypeScript vs. C
+
 #### How TypeScript and C Differ in Approach
+
 TypeScript and C are fundamentally different languages designed for different purposes, and they offer markedly different approaches to problem-solving.
 **Memory Management**: C is a low-level language where developers have direct control over memory management. This control allows for highly efficient code but also places more responsibility on the developer to manage memory correctly. On the other hand, TypeScript, like all high-level languages, includes automatic garbage collection, reducing the need for manual memory management.
 
@@ -1948,7 +2106,9 @@ The decision between TypeScript and C hinges heavily on the specific requirement
 On the other hand, C would be a better choice for low-level programming, systems programming, or when performance is a critical factor and you need fine-grained control over your system's resources
 
 ## TypeScript Best Practices
+
 ### Typing Strategies
+
 **Make Use of Type Inference**: TypeScript has a powerful type inference system, and you should take advantage of it whenever possible. Type inference can make your code cleaner and easier to read.
 ```typescript
 let x = 10; // TypeScript infers that x is a number
@@ -1985,6 +2145,7 @@ interface Person {
 
 let john: Person = { name: "John", age: 30 };
 ```
+
 **Use Type Guards for Runtime Type Checking**: While TypeScript helps catch type errors at compile-time, you may need to perform runtime type checking in some scenarios, especially when dealing with user input or external data sources. Type guards can help with this.
 ```typescript
 function isString(test: any): test is string {
@@ -1998,14 +2159,18 @@ function printLength(input: number | string) {
   }
 }
 ```
+
 **Use Optional Types for Optional Values**: TypeScript allows you to specify optional parameters, properties, or return values using the `?` operator. This can help prevent null and undefined errors.
 ```typescript
 function greet(name?: string) { // name is optional
     return name ? `Hello, ${name}` : 'Hello';
 }
 ```
+
 **Avoid `any` Type**: The `any` type is a powerful escape hatch, but it essentially turns off TypeScript's type checking. Use it sparingly, and consider other options like `unknown` or a specific type before resorting to `any`.
+
 ### Code Organization
+
 **Modularize Your Code**: TypeScript, like Python and C, supports the separation of code into modules. Modules encapsulate related code into a single unit of functionality which can be exported and used in other parts of your application. This practice promotes code reuse and separation of concerns.
 
 **Use Namespaces**: In addition to modules, TypeScript also supports namespaces which can help to group related code and avoid naming collisions. However, with the advent of ES6 modules, the need for namespaces has diminished.
@@ -2024,7 +2189,9 @@ export class MyComponent {
     name: string = 'Alice';
 }
 ```
+
 ### Common Pitfalls and How to Avoid Them
+
 **Implicit any types**: One of the main benefits of TypeScript is its type system, but if you're not careful, you can end up with variables of type any, which essentially turns off TypeScript's type checking.
 ```typescript
 let data; // Implicitly 'any'
@@ -2073,7 +2240,9 @@ risky(); // Unhandled promise rejection
 To avoid this, always handle Promise rejections using `catch` or `try`/`catch` in async functions.
 
 ## TypeScript with Libraries and Frameworks
+
 ### Using TypeScript with React
+
 React is a popular JavaScript library for building user interfaces, particularly single-page applications. When used with TypeScript, React can offer more robust, scalable, and maintainable code. Here's how TypeScript and React work together:
 
 **TypeScript with JSX**: React uses JSX, a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript/TypeScript. TypeScript supports JSX with the `.tsx` file extension. You'll find the type-checking benefits of TypeScript extend into your JSX.
@@ -2154,7 +2323,6 @@ function reducer(state: State, action: Action): State {
 ```
 
 ### Using TypeScript with Angular
-### Using TypeScript with Angular
 
 Angular, a platform for building web applications, has been designed with TypeScript in mind from the start. It leverages TypeScript's static types, classes, and decorators to provide a powerful and expressive development experience. Here's how TypeScript and Angular work together:
 
@@ -2227,8 +2395,6 @@ export class AppModule { }
 ```
 
 Overall, Angular's use of TypeScript is a key part of its power and expressiveness. By leveraging TypeScript's advanced features, Angular provides a robust framework for building large-scale web applications.
-
-### Using TypeScript with Node.js
 
 ### Using TypeScript with Node.js
 
