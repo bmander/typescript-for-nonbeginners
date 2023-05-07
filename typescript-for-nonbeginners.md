@@ -1995,6 +1995,7 @@ data = 10; // No error
 ```
 
 To avoid this, you can turn on the `noImplicitAny` compiler option, which will raise an error whenever a variable's type is implicitly `any`.
+
 **Understanding null and undefined**: In TypeScript, `null` and `undefined` are actually types. They're not exactly equivalent to Python's `None` or C's `NULL`. For example, if you declare a variable of type number, it's not valid to assign `null` or `undefined` to it unless you include them in the type declaration.
 ```typescript
 let x: number;
@@ -2002,6 +2003,7 @@ x = null; // Error
 x = undefined; // Error
 ```
 To avoid errors with null and undefined, you can enable the `strictNullChecks` compiler option, which ensures you can't assign `null` or `undefined` to something unless you explicitly include them in the type.
+
 **Type assertions**: TypeScript allows you to override its inferred types using a type assertion. This can be useful in some cases, but if used improperly, it can lead to runtime errors that TypeScript can't catch.
 ```typescript
 let data: any = "Hello";
@@ -2010,6 +2012,7 @@ data = 10;
 length = (data as string).length; // Runtime error
 ```
 To avoid this, only use type assertions when you're sure about the underlying type, or when you've just checked the type.
+
 **Mistaking interfaces for runtime types**: Unlike Python classes or C structures, TypeScript interfaces have no runtime equivalent. They're purely a compile-time construct. This means you can't use an interface to check the type of an object at runtime.
 
 ```typescript
@@ -2021,6 +2024,7 @@ let user = { name: "Alice", age: 25 };
 console.log(user instanceof User); // Error: User only exists at compile time
 ```
 To avoid this, remember that interfaces are a way for you to tell TypeScript how an object is shaped. If you need to check types at runtime, consider using classes or type guards.
+
 **Not handling promise rejections**: Both JavaScript and TypeScript use Promises for async programming. In TypeScript, unhandled Promise rejections don't crash the program like unhandled exceptions in Python or C. This can lead to silent failures that are hard to debug.
 ```typescript
 async function risky() {
