@@ -1712,8 +1712,105 @@ In general, if you need to represent a group of related numeric constants, and e
 
 
 ### Advanced Topics: Mixins, Decorators, and Metadata Reflection
+
 #### Mixins in TypeScript
+In object-oriented programming, a mixin is a class that contains methods for use by other classes without having to be the parent class of those other classes. In TypeScript, mixins allow us to create reusable pieces of functionality that can be added to traditional single inheritance-based classes. They provide a mechanism to share behavior across classes, without forcing us into an awkward inheritance hierarchy. This is in contrast to languages like C and Python that use multiple inheritance to share behavior across classes.
+
+Let's start with a simple example. Suppose we have classes representing different types of vehicles and we want to introduce an ability for these vehicles to be insured.
+```typescript
+class Car {
+  drive() {
+    console.log('Driving a car');
+  }
+}
+
+class Boat {
+  sail() {
+    console.log('Sailing a boat');
+  }
+}
+```
+
+In TypeScript, we can create a mixin using a function that takes a class and returns a new class extending the input class along with new properties or methods.
+
+```typescript
+interface Constructable {
+    new (...args: any[]): {};
+}
+
+function Insurable<TBase extends Constructable>(Base: TBase) {
+  return class extends Base {
+    insured: boolean = false;
+    getInsurance() {
+      this.insured = true;
+      console.log('Insurance obtained');
+    }
+  };
+}
+```
+
+In this code, `Constructable` is an interface that represents any type that can be instantiated with new and takes any number of arguments of any type, returning an object, i.e., a class.
+
+We can then apply this `Insurable` mixin to our `Car` and `Boat` classes:
+
+```typescript
+const InsurableCar = Insurable(Car);
+const myCar = new InsurableCar();
+myCar.drive();
+myCar.getInsurance(); // We can now call this method
+
+const InsurableBoat = Insurable(Boat);
+const myBoat = new InsurableBoat();
+myBoat.sail();
+myBoat.getInsurance(); // We can now call this method
+```
+
+Unlike Python's multiple inheritance, where a class can inherit from multiple classes leading to a potentially complex inheritance graph, TypeScript's mixins provide a more controlled way of sharing behavior across classes.
 #### Introduction to Decorators
+
+In TypeScript, decorators provide a way to add both annotations and a meta-programming syntax for class declarations and members. They can be used to modify, or decorate, classes, properties, methods, accessors, or parameters.
+
+Decorators are a proposed feature for JavaScript, but they are not yet natively supported. Python, on the other hand, has first-class support for decorators, and the concept is quite similar in both languages. In C, there is no direct equivalent to decorators, but aspects of its functionality can be achieved through other means, such as function pointers and macros.
+
+To use decorators in TypeScript, you must enable the experimentalDecorators compiler option in your tsconfig.json file:
+
+```json
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "experimentalDecorators": true
+    }
+}
+```
+
+A decorator is simply a special kind of declaration that can be attached to a class declaration, method, accessor, property, or parameter. Decorators use the form `@expression`, where `expression` must evaluate to a function that will be called at runtime with information about the decorated declaration.
+
+For example, here is a decorator that wraps a method `add` with a function that logs the arguments and result of the method whenever it is called:
+```typescript
+function log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  let originalMethod = descriptor.value;
+
+  descriptor.value = function (...args: any[]) {
+    console.log(`Calling ${propertyKey} with arguments: `, args);
+    let result = originalMethod.apply(this, args);
+    console.log(`Result of ${propertyKey}: `, result);
+    return result;
+  };
+
+  return descriptor;
+}
+
+class Calculator {
+  @log
+  add(x: number, y: number): number {
+    return x + y;
+  }
+}
+
+let calculator = new Calculator();
+calculator.add(2, 3); // This will now log the arguments and result
+```
+
 #### Decorator Factories
 #### Class Decorators and Method Decorators
 #### Accessor and Property Decorators
