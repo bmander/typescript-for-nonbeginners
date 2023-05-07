@@ -1874,7 +1874,9 @@ Choosing TypeScript over JavaScript generally comes down to the needs of your sp
 TypeScript and Python, while both high-level languages with broad utility, approach problem-solving in notably different ways.
 
 **Type System**: TypeScript, as a statically typed superset of JavaScript, employs a robust and flexible type system. This feature catches type-related errors at compile-time, reducing the likelihood of encountering such errors at run-time. On the other hand, Python is dynamically typed and leverages duck typing, a feature that enables more flexibility in writing code but at the risk of introducing type-related bugs that surface only at run-time.
+
 **Object-Oriented Programming**: Both TypeScript and Python support object-oriented programming. However, TypeScript, with its static typing, offers features such as interfaces and explicit access modifiers (like private and public). Python, while it does support classes and inheritance, does not have an equivalent feature to TypeScript's interfaces and does not enforce access modifiers as strictly.
+
 **Concurrency Model**: Python and TypeScript/JavaScript follow different models for concurrency. Python uses a multi-threaded model, with the Global Interpreter Lock (GIL) ensuring only one thread executes Python bytecode at a time. Conversely, TypeScript (like JavaScript) uses an event-driven, non-blocking I/O model. Asynchronous operations in TypeScript are handled using Promises and the async/await syntax, which can lead to a different programming approach compared to Python's threading and multiprocessing
 #### When to Use TypeScript over Python
 While the choice between TypeScript and Python depends on specific project requirements and the team's expertise, there are certain scenarios where TypeScript might be a more appropriate choice:
@@ -1890,6 +1892,7 @@ While the choice between TypeScript and Python depends on specific project requi
 #### How TypeScript and C Differ in Approach
 TypeScript and C are fundamentally different languages designed for different purposes, and they offer markedly different approaches to problem-solving.
 **Memory Management**: C is a low-level language where developers have direct control over memory management. This control allows for highly efficient code but also places more responsibility on the developer to manage memory correctly. On the other hand, TypeScript, like all high-level languages, includes automatic garbage collection, reducing the need for manual memory management.
+
 **Type System**: TypeScript, as mentioned earlier, is a statically typed language, which allows for catching type errors at compile time. However, TypeScript's type system is more flexible than C's, offering advanced features like union types, intersection types, and type inference. C is also statically typed, but its type system is simpler and less flexible.
 
 **Object-Oriented Programming**: TypeScript supports object-oriented programming, including classes, interfaces, and inheritance. C is a procedural language and does not natively support these features. Although you can implement some object-oriented concepts in C using structs and function pointers, it's not as straightforward or flexible as in TypeScript.
@@ -1966,9 +1969,13 @@ function greet(name?: string) { // name is optional
 **Avoid `any` Type**: The `any` type is a powerful escape hatch, but it essentially turns off TypeScript's type checking. Use it sparingly, and consider other options like `unknown` or a specific type before resorting to `any`.
 ### Code Organization
 **Modularize Your Code**: TypeScript, like Python and C, supports the separation of code into modules. Modules encapsulate related code into a single unit of functionality which can be exported and used in other parts of your application. This practice promotes code reuse and separation of concerns.
+
 **Use Namespaces**: In addition to modules, TypeScript also supports namespaces which can help to group related code and avoid naming collisions. However, with the advent of ES6 modules, the need for namespaces has diminished.
+
 **Leverage Interfaces and Type Aliases for Shape Definition**: TypeScript's interfaces and type aliases are powerful tools for defining shapes of objects. They can be used to describe the structure of classes, function parameters, objects, etc. They help in self-documenting the code and improving the maintainability.
+
 **Organize Related Code into Classes**: TypeScript, unlike C but similar to Python, supports object-oriented programming with classes. Classes can encapsulate related functions (methods) and variables (properties), providing a way to bundle data and functionality.
+
 **Use Decorators for Metadata**: Decorators allow you to add metadata to your class definitions and members. They can be a powerful tool for code organization, especially when used with frameworks like Angular. Note that decorators are a proposed feature for JavaScript and are not available in Python or C.
 ```typescript
 @Component({
